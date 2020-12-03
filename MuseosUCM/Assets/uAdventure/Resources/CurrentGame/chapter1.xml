@@ -31,10 +31,10 @@
     </description>
     <voice name="" synthesizeAlways="no" />
   </player>
-  <character id="CharacterId" behaviour="normal">
+  <character id="Professor" behaviour="normal">
     <resources name="No name">
       <asset type="standup" uri="assets/special/EmptyAnimation" />
-      <asset type="standdown" uri="assets/animation/kabskd.eaa.xml" />
+      <asset type="standdown" uri="assets/animation/Professor.eaa.xml" />
       <asset type="standright" uri="assets/special/EmptyAnimation" />
       <asset type="standleft" uri="assets/special/EmptyAnimation" />
       <asset type="speakup" uri="assets/special/EmptyAnimation" />
@@ -61,50 +61,81 @@
       </detailed>
     </description>
     <voice name="" synthesizeAlways="no" />
-    <actions>
-      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
-        <documentation>Created with target conversation: ConversationId</documentation>
-        <effect>
-          <trigger-conversation idTarget="ConversationId" />
-          <condition />
-        </effect>
-      </talk-to>
-    </actions>
   </character>
-  <scene id="SceneId" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+  <scene id="FDI" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
     <documentation>
     </documentation>
     <resources name="No name">
-      <asset type="background" uri="assets/background/Entrevista.jpg" />
+      <asset type="background" uri="assets/background/Fdi_ucm.jpg" />
     </resources>
     <name>
     </name>
     <default-initial-position x="400" y="450" />
-    <exits>
-      <exit rectangular="no" x="468" y="55" width="119" height="132" hasInfluenceArea="no" idTarget="Ciu" destinyY="-2147483648" destinyX="-2147483648" destinyScale="1" transitionType="0" transitionTime="0" not-effects="no">
-        <exit-look text="" cursor-path="" sound-path="" />
-        <point x="471" y="72" />
-        <point x="582" y="55" />
-        <point x="587" y="187" />
-        <point x="468" y="180" />
-      </exit>
-    </exits>
   </scene>
-  <map-scene id="Ciu" cameraType="Aerial2D" renderStyle="Tile" tileMetaIdentifier="OSMTile" usesGameplayArea="no" gameplayArea="0 0 0 0" center="(40.451495625447, -3.73473143574796)" zoom="18" start="yes">
+  <scene id="Farmacia" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/Farmacia.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+  </scene>
+  <scene id="Historia" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/Historia.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+  </scene>
+  <map-scene id="Ciu" cameraType="Aerial2D" renderStyle="Tile" tileMetaIdentifier="OSMTile" usesGameplayArea="no" gameplayArea="0 0 0 0" center="(40.4435620050642, -3.72647803061906)" zoom="19" start="yes">
     <map-element targetId="MuseoInformatica" layer="0" scale="1" orientation="2">
       <condition />
     </map-element>
-    <map-element targetId="CharacterId" layer="0" scale="0.2151158" orientation="2">
+    <map-element targetId="MuseoArqueologia" layer="0" scale="1" orientation="2">
       <condition />
+    </map-element>
+    <map-element targetId="MuseoDrogas" layer="0" scale="1" orientation="2">
+      <condition />
+    </map-element>
+    <map-element targetId="Professor" layer="0" scale="0.07029052" orientation="2">
+      <condition>
+        <inactive flag="ProfesorHabladoCaballo" />
+      </condition>
       <ext-elem-ref transformManager="uAdventure.Geo.GeopositionedDescriptor">
-        <param name="Position">(40.4513320922852, -3.73553872108459)</param>
+        <param name="Position">(40.4437675476074, -3.72678923606873)</param>
         <param name="Rotation">0</param>
-        <param name="InteractionRange">25</param>
+        <param name="InteractionRange">10</param>
         <param name="RevealOnlyOnRange">False</param>
         <param name="Hint">False</param>
         <param name="RevealParticleTexture">leaf_particle.png</param>
-        <actions />
+        <actions>
+          <enter-action>
+            <condition>
+              <inactive flag="ProfesorHabladoCaballo" />
+            </condition>
+            <effect>
+              <trigger-conversation idTarget="ConversationId" />
+              <condition />
+            </effect>
+            <only-from-outside>True</only-from-outside>
+          </enter-action>
+          <exit-action>
+            <effect>
+              <activate flag="ProfesorHabladoCaballo" />
+              <condition />
+            </effect>
+            <only-from-inside>True</only-from-inside>
+          </exit-action>
+        </actions>
       </ext-elem-ref>
+    </map-element>
+    <map-element targetId="CaballoFarmacia" layer="0" scale="1" orientation="2">
+      <condition />
     </map-element>
   </map-scene>
   <geoelement id="MuseoInformatica">
@@ -117,7 +148,7 @@
       </detailed>
     </description>
     <geometries>
-      <geometry influence="10">
+      <geometry influence="5">
         <Polygon>
           <exterior>
             <LinearRing>
@@ -130,7 +161,7 @@
     <actions>
       <enter-action>
         <effect>
-          <trigger-scene idTarget="SceneId" x="400" y="450" transitionTime="0" transitionType="0" />
+          <trigger-scene idTarget="FDI" x="677" y="744" transitionTime="0" transitionType="0" />
           <condition />
         </effect>
         <only-from-outside>True</only-from-outside>
@@ -144,21 +175,102 @@
       </exit-action>
     </actions>
   </geoelement>
-  <graph-conversation id="ConversationId">
-    <dialogue-node nodeindex="0" editor-x="104" editor-y="98">
-      <speak-char idTarget="CharacterId">
-        <resources name="No name" />
-        <text>BLA BLA BLA</text>
-      </speak-char>
-      <condition />
-      <end-conversation>
+  <geoelement id="MuseoArqueologia">
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <geometries>
+      <geometry influence="5">
+        <Polygon>
+          <exterior>
+            <LinearRing>
+              <posList>40,4491181473602 -3,72972618573604 40,4485384685168 -3,72959743970335 40,4483996714321 -3,73126040929258 40,4489630225259 -3,73133551114499</posList>
+            </LinearRing>
+          </exterior>
+        </Polygon>
+      </geometry>
+    </geometries>
+    <actions>
+      <enter-action>
+        <effect>
+          <trigger-scene idTarget="Historia" x="1024" y="1152" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+        <only-from-outside>True</only-from-outside>
+      </enter-action>
+    </actions>
+  </geoelement>
+  <geoelement id="MuseoDrogas">
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <geometries>
+      <geometry influence="10">
+        <Polygon>
+          <exterior>
+            <LinearRing>
+              <posList>40,4458441209428 -3,72579943173835 40,444970475965 -3,72554193967291 40,4448071765787 -3,72693668836065 40,4456971534232 -3,72706543439337</posList>
+            </LinearRing>
+          </exterior>
+        </Polygon>
+      </geometry>
+    </geometries>
+    <actions>
+      <enter-action>
+        <effect>
+          <trigger-scene idTarget="Farmacia" x="640" y="502" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+        <only-from-outside>True</only-from-outside>
+      </enter-action>
+    </actions>
+  </geoelement>
+  <geoelement id="CaballoFarmacia">
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <geometries>
+      <geometry influence="10">
+        <Point>
+          <pos>40,4437987940793 -3,72606228822173</pos>
+        </Point>
+      </geometry>
+    </geometries>
+    <actions>
+      <enter-action>
         <effect>
           <navigate navigation-type="Ordered">
-            <step locks="False">MuseoInformatica</step>
+            <step locks="False">MuseoDrogas</step>
           </navigate>
           <condition />
         </effect>
-      </end-conversation>
+        <only-from-outside>True</only-from-outside>
+      </enter-action>
+    </actions>
+  </geoelement>
+  <graph-conversation id="ConversationId">
+    <dialogue-node nodeindex="0" editor-x="104" editor-y="98">
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Ve en la dirección del trasero del caballo.</text>
+      </speak-char>
+      <condition />
+      <end-conversation />
     </dialogue-node>
   </graph-conversation>
 </eAdventure>
