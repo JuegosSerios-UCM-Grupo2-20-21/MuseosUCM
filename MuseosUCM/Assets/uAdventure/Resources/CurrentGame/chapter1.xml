@@ -449,7 +449,7 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       </active-area>
     </active-areas>
   </scene>
-  <map-scene id="Ciu" cameraType="Aerial2D" renderStyle="Tile" tileMetaIdentifier="OSMTile" usesGameplayArea="no" gameplayArea="0 0 0 0" center="(40.4441253967066, -3.72646193736511)" zoom="19" start="yes">
+  <map-scene id="Ciu" cameraType="Aerial2D" renderStyle="Tile" tileMetaIdentifier="OSMTile" usesGameplayArea="no" gameplayArea="0 0 0 0" center="(40.4441539744177, -3.72381459706742)" zoom="17" start="yes">
     <map-element targetId="MuseoInformatica" layer="0" scale="1" orientation="2">
       <condition />
     </map-element>
@@ -457,7 +457,9 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       <condition />
     </map-element>
     <map-element targetId="MuseoDrogas" layer="0" scale="1" orientation="2">
-      <condition />
+      <condition>
+        <inactive flag="QRArbolFarmaciaActivo" />
+      </condition>
     </map-element>
     <map-element targetId="Professor" layer="0" scale="0.07029052" orientation="2">
       <condition>
@@ -489,6 +491,35 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       </ext-elem-ref>
     </map-element>
     <map-element targetId="CaballoFarmacia" layer="0" scale="1" orientation="2">
+      <condition />
+    </map-element>
+    <map-element targetId="GeoArbolFarmacia" layer="0" scale="1" orientation="2">
+      <condition>
+        <inactive flag="PistaCorreosActiva" />
+      </condition>
+    </map-element>
+    <map-element targetId="GeoCorreos" layer="0" scale="1" orientation="2">
+      <condition>
+        <inactive flag="PistaCruceActiva" />
+      </condition>
+    </map-element>
+    <map-element targetId="GeoCruce" layer="0" scale="1" orientation="2">
+      <condition>
+        <inactive flag="PistaSenyalActiva" />
+      </condition>
+    </map-element>
+    <map-element targetId="GeoSenyal" layer="0" scale="1" orientation="2">
+      <condition>
+        <active flag="PistaEscalerasActiva" />
+      </condition>
+    </map-element>
+    <map-element targetId="GeoEscaleras" layer="0" scale="1" orientation="2">
+      <condition />
+    </map-element>
+    <map-element targetId="GeoTunel" layer="0" scale="1" orientation="2">
+      <condition />
+    </map-element>
+    <map-element targetId="GeoEntradaBosque" layer="0" scale="1" orientation="2">
       <condition />
     </map-element>
   </map-scene>
@@ -630,6 +661,164 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       <geometry influence="20">
         <Point>
           <pos>40,4448153415575 -3,72689913743432</pos>
+        </Point>
+      </geometry>
+    </geometries>
+    <actions>
+      <enter-action>
+        <effect>
+          <generate-object idTarget="PosteCorreos" />
+          <condition />
+          <activate flag="PistaCorreosActiva" />
+          <condition />
+        </effect>
+        <only-from-outside>True</only-from-outside>
+      </enter-action>
+    </actions>
+  </geoelement>
+  <geoelement id="GeoCorreos">
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <geometries>
+      <geometry influence="5">
+        <Point>
+          <pos>40,4452419603226 -3,72729073995059</pos>
+        </Point>
+      </geometry>
+    </geometries>
+    <actions>
+      <enter-action>
+        <effect>
+          <generate-object idTarget="CruceCarretera" />
+          <condition />
+          <activate flag="PistaCruceActiva" />
+          <condition />
+        </effect>
+        <only-from-outside>True</only-from-outside>
+      </enter-action>
+    </actions>
+  </geoelement>
+  <geoelement id="GeoCruce">
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <geometries>
+      <geometry influence="10">
+        <Point>
+          <pos>40,4479138793842 -3,72813295358134</pos>
+        </Point>
+      </geometry>
+    </geometries>
+    <actions>
+      <enter-action>
+        <effect>
+          <generate-object idTarget="CartelesTrafico" />
+          <condition />
+          <activate flag="PistaSenyalActiva" />
+          <condition />
+        </effect>
+        <only-from-outside>True</only-from-outside>
+      </enter-action>
+    </actions>
+  </geoelement>
+  <geoelement id="GeoSenyal">
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <geometries>
+      <geometry influence="10">
+        <Point>
+          <pos>40,4481649404159 -3,72944187158067</pos>
+        </Point>
+      </geometry>
+    </geometries>
+    <actions>
+      <enter-action>
+        <effect>
+          <generate-object idTarget="EscalerasCalle" />
+          <condition />
+          <activate flag="PistaEscalerasActiva" />
+          <condition />
+        </effect>
+        <only-from-outside>True</only-from-outside>
+      </enter-action>
+    </actions>
+  </geoelement>
+  <geoelement id="GeoEscaleras">
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <geometries>
+      <geometry influence="10">
+        <Point>
+          <pos>40,4478322333107 -3,73270343774267</pos>
+        </Point>
+      </geometry>
+    </geometries>
+    <actions>
+      <enter-action>
+        <effect>
+          <generate-object idTarget="FachadaHistoria1" />
+          <condition />
+          <generate-object idTarget="FachadaHistoria2" />
+          <condition />
+        </effect>
+        <only-from-outside>True</only-from-outside>
+      </enter-action>
+    </actions>
+  </geoelement>
+  <geoelement id="GeoTunel">
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <geometries>
+      <geometry influence="10">
+        <Point>
+          <pos>40,4491793807486 -3,73383801215597</pos>
+        </Point>
+      </geometry>
+    </geometries>
+    <actions />
+  </geoelement>
+  <geoelement id="GeoEntradaBosque">
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <geometries>
+      <geometry influence="5">
+        <Point>
+          <pos>40,4501182857215 -3,7342618011803</pos>
         </Point>
       </geometry>
     </geometries>
