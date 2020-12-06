@@ -31,7 +31,7 @@
     </description>
     <voice name="" synthesizeAlways="no" />
   </player>
-  <character id="Professor" behaviour="normal">
+  <character id="Professor" behaviour="first-action">
     <resources name="No name">
       <asset type="standup" uri="assets/special/EmptyAnimation" />
       <asset type="standdown" uri="assets/animation/Professor.eaa.xml" />
@@ -61,6 +61,16 @@
       </detailed>
     </description>
     <voice name="" synthesizeAlways="no" />
+    <actions>
+      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
+        <effect>
+          <trigger-conversation idTarget="ConversationId" />
+          <condition />
+          <generate-object idTarget="ArbolFarmacia" />
+          <condition />
+        </effect>
+      </talk-to>
+    </actions>
   </character>
   <scene id="FDI" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
     <documentation>
@@ -92,7 +102,354 @@
     </name>
     <default-initial-position x="400" y="450" />
   </scene>
-  <map-scene id="Ciu" cameraType="Aerial2D" renderStyle="Tile" tileMetaIdentifier="OSMTile" usesGameplayArea="no" gameplayArea="0 0 0 0" center="(40.4435620050642, -3.72647803061906)" zoom="19" start="yes">
+  <scene id="EscenaArbolFarmacia" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/IMG_20201204_115556.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+    <objects>
+      <object-ref idTarget="BotonVolver" x="309" y="2048" scale="1.432168" layer="1" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+    </objects>
+    <active-areas>
+      <active-area id="AbrirPista" rectangular="yes" x="22" y="18" width="152" height="216" hasInfluenceArea="no" behaviour="first-action">
+        <description>
+          <name>
+          </name>
+          <brief>
+          </brief>
+          <detailed>
+          </detailed>
+        </description>
+        <actions>
+          <use needsGoTo="yes" keepDistance="35" not-effects="no">
+            <effect>
+              <speak-player>Busca el árbol de la fotografía cerca de la entrada de la facultad de Farmacia.</speak-player>
+              <condition />
+            </effect>
+          </use>
+        </actions>
+      </active-area>
+    </active-areas>
+  </scene>
+  <scene id="EscenaPosteCorreos" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/IMG_20201204_120139.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+    <objects>
+      <object-ref idTarget="BotonVolver" x="309" y="2048" scale="1.432168" layer="1" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+    </objects>
+    <active-areas>
+      <active-area id="AbrirPistaCorreos" rectangular="yes" x="15" y="23" width="160" height="212" hasInfluenceArea="no" behaviour="normal">
+        <description>
+          <name>
+          </name>
+          <brief>
+          </brief>
+          <detailed>
+          </detailed>
+        </description>
+        <actions>
+          <use needsGoTo="yes" keepDistance="35" not-effects="no">
+            <effect>
+              <speak-player>Este poste de correos está en la calle principal de la Complutense (C/Avenida Complutense).
+Según sales de Farmacia hacia la derecha.</speak-player>
+              <condition />
+            </effect>
+          </use>
+        </actions>
+      </active-area>
+    </active-areas>
+  </scene>
+  <scene id="EscenaCruceCarretera" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/IMG_20201204_120913.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+    <objects>
+      <object-ref idTarget="BotonVolver" x="247" y="1534" scale="1.074126" layer="1" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+    </objects>
+    <active-areas>
+      <active-area id="AbrirPistaCruce" rectangular="yes" x="21" y="20" width="151" height="201" hasInfluenceArea="no" behaviour="normal">
+        <description>
+          <name>
+          </name>
+          <brief>
+          </brief>
+          <detailed>
+          </detailed>
+        </description>
+        <actions>
+          <use needsGoTo="yes" keepDistance="35" not-effects="no">
+            <effect>
+              <speak-player>Tienes que cruzar la calle respecto al buzón de correos y seguir caminando recto por Avenida Complutense.</speak-player>
+              <condition />
+            </effect>
+          </use>
+        </actions>
+      </active-area>
+    </active-areas>
+  </scene>
+  <scene id="EscenaCarteles" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/IMG_20201204_121059.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+    <objects>
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonVolver" x="312" y="2054" scale="1.432168" layer="1" hasInfluenceArea="no" />
+    </objects>
+    <active-areas>
+      <active-area id="AbrirPistaCarteles" rectangular="yes" x="20" y="22" width="148" height="206" hasInfluenceArea="no" behaviour="normal">
+        <description>
+          <name>
+          </name>
+          <brief>
+          </brief>
+          <detailed>
+          </detailed>
+        </description>
+        <actions>
+          <use needsGoTo="yes" keepDistance="35" not-effects="no">
+            <effect>
+              <speak-player>En la calle de la izquierda del cruce.</speak-player>
+              <condition />
+            </effect>
+          </use>
+        </actions>
+      </active-area>
+    </active-areas>
+  </scene>
+  <scene id="EscenaEscaleras" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/IMG_20201204_121546.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+    <objects>
+      <object-ref idTarget="BotonVolver" x="240" y="1537" scale="1.074126" layer="1" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+    </objects>
+    <active-areas>
+      <active-area id="AbrirPistaEscaleras" rectangular="yes" x="25" y="24" width="145" height="196" hasInfluenceArea="no" behaviour="normal">
+        <description>
+          <name>
+          </name>
+          <brief>
+          </brief>
+          <detailed>
+          </detailed>
+        </description>
+        <actions>
+          <use needsGoTo="yes" keepDistance="35" not-effects="no">
+            <effect>
+              <speak-player>En la misma calle que las señales, dando a la derecha.</speak-player>
+              <condition />
+            </effect>
+          </use>
+        </actions>
+      </active-area>
+    </active-areas>
+  </scene>
+  <scene id="EscenaFachadaHistoria1" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/IMG_20201204_121812.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+    <objects>
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonVolver" x="240" y="1534" scale="1.074126" layer="1" hasInfluenceArea="no" />
+    </objects>
+    <active-areas>
+      <active-area id="AbrirPistaFachadaHistoria1" rectangular="yes" x="23" y="21" width="154" height="196" hasInfluenceArea="no" behaviour="normal">
+        <description>
+          <name>
+          </name>
+          <brief>
+          </brief>
+          <detailed>
+          </detailed>
+        </description>
+        <actions>
+          <use needsGoTo="yes" keepDistance="35" not-effects="no">
+            <effect>
+              <speak-player>Entrada principal de la facultad de Geografía e Historia.
+Hay que bajar la cuesta hacia la derecha.
+
+Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
+              <condition />
+            </effect>
+          </use>
+        </actions>
+      </active-area>
+    </active-areas>
+  </scene>
+  <scene id="EscenaFachadaHistoria2" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/IMG_20201204_123841.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+    <objects>
+      <object-ref idTarget="BotonVolver" x="242" y="1537" scale="1.074126" layer="1" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+    </objects>
+    <active-areas>
+      <active-area id="AbrirPistaFachadaHistoria2" rectangular="yes" x="16" y="16" width="169" height="217" hasInfluenceArea="no" behaviour="normal">
+        <description>
+          <name>
+          </name>
+          <brief>
+          </brief>
+          <detailed>
+          </detailed>
+        </description>
+        <actions>
+          <use needsGoTo="yes" keepDistance="35" not-effects="no">
+            <effect>
+              <speak-player>No es la entrada principal pero está al lado, un poco más a la izquierda.
+Hay que bajar la cuesta hacia la derecha.
+
+Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
+              <condition />
+            </effect>
+          </use>
+        </actions>
+      </active-area>
+    </active-areas>
+  </scene>
+  <scene id="EscenaTunelHistoria" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/IMG_20201204_124121.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+    <objects>
+      <object-ref idTarget="BotonVolver" x="320" y="2048" scale="1.432168" layer="1" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+    </objects>
+    <active-areas>
+      <active-area id="AbrirPistaTunel" rectangular="yes" x="23" y="17" width="160" height="204" hasInfluenceArea="no" behaviour="normal">
+        <description>
+          <name>
+          </name>
+          <brief>
+          </brief>
+          <detailed>
+          </detailed>
+        </description>
+        <actions>
+          <use needsGoTo="yes" keepDistance="35" not-effects="no">
+            <effect>
+              <speak-player>El túnel está situado a la derecha de la entrada principal al edificio.</speak-player>
+              <condition />
+            </effect>
+          </use>
+        </actions>
+      </active-area>
+    </active-areas>
+  </scene>
+  <scene id="EscenaEntradaBosque" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/IMG_20201204_124913.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+    <objects>
+      <object-ref idTarget="BotonVolver" x="328" y="2046" scale="1.432168" layer="1" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+    </objects>
+    <active-areas>
+      <active-area id="AbrirPistaEntradaBosque" rectangular="yes" x="18" y="19" width="164" height="214" hasInfluenceArea="no" behaviour="normal">
+        <description>
+          <name>
+          </name>
+          <brief>
+          </brief>
+          <detailed>
+          </detailed>
+        </description>
+        <actions>
+          <use needsGoTo="yes" keepDistance="35" not-effects="no">
+            <effect>
+              <speak-player>Una vez atraviesas el túnel, cruzas el parking y llegas a la entrada del camino que atraviesa el bosque.</speak-player>
+              <condition />
+            </effect>
+          </use>
+        </actions>
+      </active-area>
+    </active-areas>
+  </scene>
+  <scene id="EscenaSalidaBosque" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/IMG_20201204_125332.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+    <objects>
+      <object-ref idTarget="BotonVolver" x="247" y="1540" scale="1.074126" layer="1" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+    </objects>
+    <active-areas>
+      <active-area id="AbrirPistaSalidaBosque" rectangular="yes" x="18" y="19" width="157" height="214" hasInfluenceArea="no" behaviour="normal">
+        <description>
+          <name>
+          </name>
+          <brief>
+          </brief>
+          <detailed>
+          </detailed>
+        </description>
+        <actions>
+          <use needsGoTo="yes" keepDistance="35" not-effects="no">
+            <effect>
+              <speak-player>Tienes que atravesar todo el camino del bosque, cruzar e ir a la derecha.</speak-player>
+              <condition />
+            </effect>
+          </use>
+        </actions>
+      </active-area>
+    </active-areas>
+  </scene>
+  <map-scene id="Ciu" cameraType="Aerial2D" renderStyle="Tile" tileMetaIdentifier="OSMTile" usesGameplayArea="no" gameplayArea="0 0 0 0" center="(40.4441253967066, -3.72646193736511)" zoom="19" start="yes">
     <map-element targetId="MuseoInformatica" layer="0" scale="1" orientation="2">
       <condition />
     </map-element>
@@ -115,11 +472,8 @@
         <param name="RevealParticleTexture">leaf_particle.png</param>
         <actions>
           <enter-action>
-            <condition>
-              <inactive flag="ProfesorHabladoCaballo" />
-            </condition>
             <effect>
-              <trigger-conversation idTarget="ConversationId" />
+              <generate-object idTarget="ArbolFarmacia" />
               <condition />
             </effect>
             <only-from-outside>True</only-from-outside>
@@ -263,6 +617,24 @@
       </enter-action>
     </actions>
   </geoelement>
+  <geoelement id="GeoArbolFarmacia">
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <geometries>
+      <geometry influence="20">
+        <Point>
+          <pos>40,4448153415575 -3,72689913743432</pos>
+        </Point>
+      </geometry>
+    </geometries>
+    <actions />
+  </geoelement>
   <graph-conversation id="ConversationId">
     <dialogue-node nodeindex="0" editor-x="104" editor-y="98">
       <speak-char idTarget="Professor">
@@ -273,4 +645,202 @@
       <end-conversation />
     </dialogue-node>
   </graph-conversation>
+  <object id="ArbolFarmacia" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
+    <resources name="No name">
+      <asset type="image" uri="assets/image/IMG_20201204_115556.jpg" />
+      <asset type="icon" uri="assets/special/EmptyIcon.png" />
+    </resources>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <actions>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Permite que veamos el objeto</documentation>
+        <effect>
+          <trigger-scene idTarget="EscenaArbolFarmacia" x="400" y="450" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+      </use>
+    </actions>
+  </object>
+  <object id="PosteCorreos" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
+    <resources name="No name">
+      <asset type="image" uri="assets/image/IMG_20201204_120139.jpg" />
+      <asset type="icon" uri="assets/special/EmptyIcon.png" />
+    </resources>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+  </object>
+  <object id="CruceCarretera" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
+    <resources name="No name">
+      <asset type="image" uri="assets/image/IMG_20201204_120913.jpg" />
+      <asset type="icon" uri="assets/special/EmptyIcon.png" />
+    </resources>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+  </object>
+  <object id="CartelesTrafico" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
+    <resources name="No name">
+      <asset type="image" uri="assets/image/IMG_20201204_121059.jpg" />
+      <asset type="icon" uri="assets/special/EmptyIcon.png" />
+    </resources>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+  </object>
+  <object id="EscalerasCalle" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
+    <resources name="No name">
+      <asset type="image" uri="assets/image/IMG_20201204_121548.jpg" />
+      <asset type="icon" uri="assets/special/EmptyIcon.png" />
+    </resources>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+  </object>
+  <object id="FachadaHistoria1" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
+    <resources name="No name">
+      <asset type="image" uri="assets/image/IMG_20201204_121812.jpg" />
+      <asset type="icon" uri="assets/special/EmptyIcon.png" />
+    </resources>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+  </object>
+  <object id="FachadaHistoria2" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
+    <resources name="No name">
+      <asset type="image" uri="assets/image/IMG_20201204_123841.jpg" />
+      <asset type="icon" uri="assets/special/EmptyIcon.png" />
+    </resources>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+  </object>
+  <object id="TunelHistoria" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
+    <resources name="No name">
+      <asset type="image" uri="assets/image/IMG_20201204_124121.jpg" />
+      <asset type="icon" uri="assets/special/EmptyIcon.png" />
+    </resources>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+  </object>
+  <object id="EntradaBosque" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
+    <resources name="No name">
+      <asset type="image" uri="assets/image/IMG_20201204_124913.jpg" />
+      <asset type="icon" uri="assets/special/EmptyIcon.png" />
+    </resources>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+  </object>
+  <object id="SalidaBosque" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
+    <resources name="No name">
+      <asset type="image" uri="assets/image/IMG_20201204_125302.jpg" />
+      <asset type="icon" uri="assets/special/EmptyIcon.png" />
+    </resources>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+  </object>
+  <object id="BotonVolver" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
+    <resources name="No name">
+      <asset type="image" uri="assets/image/Volver-boton.png" />
+      <asset type="icon" uri="assets/special/EmptyIcon.png" />
+    </resources>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <actions>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <effect>
+          <trigger-scene idTarget="Ciu" x="677" y="744" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+      </use>
+    </actions>
+  </object>
+  <object id="BotonPista" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
+    <resources name="No name">
+      <asset type="image" uri="assets/image/bombillica.png" />
+      <asset type="icon" uri="assets/special/EmptyIcon.png" />
+    </resources>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+  </object>
+  <qr-code id="ItemArbolFarmacia">
+    <content>
+    </content>
+    <documentation>
+    </documentation>
+    <condition />
+    <effect>
+      <generate-object idTarget="ArbolFarmacia" />
+      <condition />
+      <activate flag="QRArbolFarmaciaActivo" />
+      <condition />
+    </effect>
+  </qr-code>
 </eAdventure>
