@@ -61,27 +61,7 @@
       </detailed>
     </description>
     <voice name="" synthesizeAlways="no" />
-    <actions>
-      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
-        <effect>
-          <trigger-conversation idTarget="ConversationId" />
-          <condition />
-          <generate-object idTarget="ArbolFarmacia" />
-          <condition />
-        </effect>
-      </talk-to>
-    </actions>
   </character>
-  <scene id="FDI" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
-    <documentation>
-    </documentation>
-    <resources name="No name">
-      <asset type="background" uri="assets/background/Fdi_ucm.jpg" />
-    </resources>
-    <name>
-    </name>
-    <default-initial-position x="400" y="450" />
-  </scene>
   <scene id="Farmacia" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
     <documentation>
     </documentation>
@@ -91,16 +71,31 @@
     <name>
     </name>
     <default-initial-position x="400" y="450" />
-  </scene>
-  <scene id="Historia" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
-    <documentation>
-    </documentation>
-    <resources name="No name">
-      <asset type="background" uri="assets/background/Historia.jpg" />
-    </resources>
-    <name>
-    </name>
-    <default-initial-position x="400" y="450" />
+    <objects>
+      <object-ref idTarget="BotonVolver" x="219" y="652" scale="1" layer="0" hasInfluenceArea="no" />
+    </objects>
+    <active-areas>
+      <active-area id="Test" rectangular="yes" x="250" y="158" width="750" height="327" hasInfluenceArea="no" behaviour="normal">
+        <description>
+          <name>
+          </name>
+          <brief>
+          </brief>
+          <detailed>
+          </detailed>
+        </description>
+        <actions>
+          <use needsGoTo="yes" keepDistance="35" not-effects="no">
+            <effect>
+              <activate flag="QRArbolFarmaciaActivo" />
+              <condition />
+              <generate-object idTarget="ArbolFarmacia" />
+              <condition />
+            </effect>
+          </use>
+        </actions>
+      </active-area>
+    </active-areas>
   </scene>
   <scene id="EscenaArbolFarmacia" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
     <documentation>
@@ -449,22 +444,89 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       </active-area>
     </active-areas>
   </scene>
-  <map-scene id="Ciu" cameraType="Aerial2D" renderStyle="Tile" tileMetaIdentifier="OSMTile" usesGameplayArea="no" gameplayArea="0 0 0 0" center="(40.4441539744177, -3.72381459706742)" zoom="17" start="yes">
-    <map-element targetId="MuseoInformatica" layer="0" scale="1" orientation="2">
-      <condition />
-    </map-element>
-    <map-element targetId="MuseoArqueologia" layer="0" scale="1" orientation="2">
-      <condition />
-    </map-element>
-    <map-element targetId="MuseoDrogas" layer="0" scale="1" orientation="2">
-      <condition>
-        <inactive flag="QRArbolFarmaciaActivo" />
-      </condition>
-    </map-element>
+  <scene id="FDI" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/Fdi_ucm.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+  </scene>
+  <scene id="EntradaHistoria1" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/IMG_20201204_121812.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+    <objects>
+      <object-ref idTarget="BotonVolver" x="470" y="1505" scale="2.041802" layer="0" hasInfluenceArea="no" />
+    </objects>
+    <active-areas>
+      <active-area id="TestGeo1" rectangular="yes" x="220" y="220" width="1699" height="669" hasInfluenceArea="no" behaviour="normal">
+        <description>
+          <name>
+          </name>
+          <brief>
+          </brief>
+          <detailed>
+          </detailed>
+        </description>
+        <actions>
+          <use needsGoTo="yes" keepDistance="35" not-effects="no">
+            <effect>
+              <generate-object idTarget="TunelHistoria" />
+              <condition />
+              <activate flag="QRTunelActivo" />
+              <condition />
+            </effect>
+          </use>
+        </actions>
+      </active-area>
+    </active-areas>
+  </scene>
+  <scene id="EntradaHistoria2" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/IMG_20201204_123841.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+    <objects>
+      <object-ref idTarget="BotonVolver" x="403" y="1529" scale="1.884658" layer="0" hasInfluenceArea="no" />
+    </objects>
+    <active-areas>
+      <active-area id="TestGeo2" rectangular="yes" x="448" y="442" width="1091" height="446" hasInfluenceArea="no" behaviour="normal">
+        <description>
+          <name>
+          </name>
+          <brief>
+          </brief>
+          <detailed>
+          </detailed>
+        </description>
+        <actions>
+          <use needsGoTo="yes" keepDistance="35" not-effects="no">
+            <effect>
+              <generate-object idTarget="TunelHistoria" />
+              <condition />
+              <activate flag="QRTunelActivo" />
+              <condition />
+            </effect>
+          </use>
+        </actions>
+      </active-area>
+    </active-areas>
+  </scene>
+  <map-scene id="Ciu" cameraType="Aerial2D" renderStyle="Tile" tileMetaIdentifier="OSMTile" usesGameplayArea="no" gameplayArea="0 0 0 0" center="(40.4435919713227, -3.72659075261767)" zoom="19" start="yes">
     <map-element targetId="Professor" layer="0" scale="0.07029052" orientation="2">
-      <condition>
-        <inactive flag="ProfesorHabladoCaballo" />
-      </condition>
+      <condition />
       <ext-elem-ref transformManager="uAdventure.Geo.GeopositionedDescriptor">
         <param name="Position">(40.4437675476074, -3.72678923606873)</param>
         <param name="Rotation">0</param>
@@ -475,54 +537,231 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
         <actions>
           <enter-action>
             <effect>
-              <generate-object idTarget="ArbolFarmacia" />
+              <trigger-conversation idTarget="Intro" />
               <condition />
             </effect>
             <only-from-outside>True</only-from-outside>
           </enter-action>
-          <exit-action>
-            <effect>
-              <activate flag="ProfesorHabladoCaballo" />
-              <condition />
-            </effect>
-            <only-from-inside>True</only-from-inside>
-          </exit-action>
         </actions>
       </ext-elem-ref>
     </map-element>
-    <map-element targetId="CaballoFarmacia" layer="0" scale="1" orientation="2">
-      <condition />
-    </map-element>
-    <map-element targetId="GeoArbolFarmacia" layer="0" scale="1" orientation="2">
+    <map-element targetId="MuseoDrogas" layer="0" scale="1" orientation="2">
       <condition>
-        <inactive flag="PistaCorreosActiva" />
+        <inactive flag="QRArbolFarmaciaActivo" />
       </condition>
     </map-element>
-    <map-element targetId="GeoCorreos" layer="0" scale="1" orientation="2">
+    <map-element targetId="PosteCorreos" layer="0" scale="0.03" orientation="2">
       <condition>
-        <inactive flag="PistaCruceActiva" />
+        <active flag="QRArbolFarmaciaActivo" />
       </condition>
+      <ext-elem-ref transformManager="uAdventure.Geo.GeopositionedDescriptor">
+        <param name="Position">(40.4447326660156, -3.72690176963806)</param>
+        <param name="Rotation">0</param>
+        <param name="InteractionRange">20</param>
+        <param name="RevealOnlyOnRange">True</param>
+        <param name="Hint">False</param>
+        <param name="RevealParticleTexture">leaf_particle.png</param>
+        <actions />
+      </ext-elem-ref>
     </map-element>
-    <map-element targetId="GeoCruce" layer="0" scale="1" orientation="2">
+    <map-element targetId="CruceCarretera" layer="0" scale="0.02431485" orientation="2">
       <condition>
-        <inactive flag="PistaSenyalActiva" />
+        <active flag="PistaCorreosActiva" />
       </condition>
+      <ext-elem-ref transformManager="uAdventure.Geo.GeopositionedDescriptor">
+        <param name="Position">(40.4451904296875, -3.72729063034058)</param>
+        <param name="Rotation">0</param>
+        <param name="InteractionRange">10</param>
+        <param name="RevealOnlyOnRange">True</param>
+        <param name="Hint">False</param>
+        <param name="RevealParticleTexture">leaf_particle.png</param>
+        <actions />
+      </ext-elem-ref>
     </map-element>
-    <map-element targetId="GeoSenyal" layer="0" scale="1" orientation="2">
+    <map-element targetId="CartelesTrafico" layer="0" scale="0.03" orientation="2">
+      <condition>
+        <active flag="PistaCruceActiva" />
+      </condition>
+      <ext-elem-ref transformManager="uAdventure.Geo.GeopositionedDescriptor">
+        <param name="Position">(40.4478302001953, -3.72813558578491)</param>
+        <param name="Rotation">0</param>
+        <param name="InteractionRange">10</param>
+        <param name="RevealOnlyOnRange">True</param>
+        <param name="Hint">False</param>
+        <param name="RevealParticleTexture">leaf_particle.png</param>
+        <actions />
+      </ext-elem-ref>
+    </map-element>
+    <map-element targetId="EscalerasCalle" layer="0" scale="0.03" orientation="2">
+      <condition>
+        <active flag="PistaSenyalActiva" />
+      </condition>
+      <ext-elem-ref transformManager="uAdventure.Geo.GeopositionedDescriptor">
+        <param name="Position">(40.448112487793, -3.729412317276)</param>
+        <param name="Rotation">0</param>
+        <param name="InteractionRange">10</param>
+        <param name="RevealOnlyOnRange">True</param>
+        <param name="Hint">False</param>
+        <param name="RevealParticleTexture">leaf_particle.png</param>
+        <actions />
+      </ext-elem-ref>
+    </map-element>
+    <map-element targetId="FachadaHistoria1" layer="0" scale="0.03" orientation="2">
       <condition>
         <active flag="PistaEscalerasActiva" />
       </condition>
+      <ext-elem-ref transformManager="uAdventure.Geo.GeopositionedDescriptor">
+        <param name="Position">(40.4477729797363, -3.73270344734192)</param>
+        <param name="Rotation">0</param>
+        <param name="InteractionRange">10</param>
+        <param name="RevealOnlyOnRange">True</param>
+        <param name="Hint">False</param>
+        <param name="RevealParticleTexture">leaf_particle.png</param>
+        <actions />
+      </ext-elem-ref>
     </map-element>
-    <map-element targetId="GeoEscaleras" layer="0" scale="1" orientation="2">
+    <map-element targetId="MuseoArqueologia1" layer="0" scale="1" orientation="2">
+      <condition>
+        <inactive flag="QRTunelActivo" />
+      </condition>
+    </map-element>
+    <map-element targetId="MuseoArqueologia2" layer="0" scale="1" orientation="2">
+      <condition>
+        <inactive flag="QRTunelActivo" />
+      </condition>
+    </map-element>
+    <map-element targetId="EntradaBosque" layer="0" scale="0.03" orientation="2">
+      <condition>
+        <active flag="QRTunelActivo" />
+      </condition>
+      <ext-elem-ref transformManager="uAdventure.Geo.GeopositionedDescriptor">
+        <param name="Position">(40.4490966796875, -3.73383808135986)</param>
+        <param name="Rotation">0</param>
+        <param name="InteractionRange">10</param>
+        <param name="RevealOnlyOnRange">True</param>
+        <param name="Hint">False</param>
+        <param name="RevealParticleTexture">leaf_particle.png</param>
+        <actions />
+      </ext-elem-ref>
+    </map-element>
+    <map-element targetId="MuseoInformatica" layer="0" scale="1" orientation="2">
       <condition />
     </map-element>
-    <map-element targetId="GeoTunel" layer="0" scale="1" orientation="2">
-      <condition />
-    </map-element>
-    <map-element targetId="GeoEntradaBosque" layer="0" scale="1" orientation="2">
-      <condition />
+    <map-element targetId="SalidaBosque" layer="0" scale="0.03" orientation="2">
+      <condition>
+        <active flag="PistaEntradaBosqueActiva" />
+      </condition>
+      <ext-elem-ref transformManager="uAdventure.Geo.GeopositionedDescriptor">
+        <param name="Position">(40.4500389099121, -3.73426175117493)</param>
+        <param name="Rotation">0</param>
+        <param name="InteractionRange">10</param>
+        <param name="RevealOnlyOnRange">True</param>
+        <param name="Hint">False</param>
+        <param name="RevealParticleTexture">leaf_particle.png</param>
+        <actions />
+      </ext-elem-ref>
     </map-element>
   </map-scene>
+  <geoelement id="CaballoFarmacia">
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <geometries>
+      <geometry influence="10">
+        <Point>
+          <pos>40,4437987940793 -3,72606228822173</pos>
+        </Point>
+      </geometry>
+    </geometries>
+    <actions>
+      <enter-action>
+        <only-from-outside>True</only-from-outside>
+      </enter-action>
+    </actions>
+  </geoelement>
+  <geoelement id="MuseoDrogas">
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <geometries>
+      <geometry influence="20">
+        <Point>
+          <pos>40,4449378146183 -3,726276864943</pos>
+        </Point>
+      </geometry>
+    </geometries>
+    <actions>
+      <enter-action>
+        <effect>
+          <trigger-scene idTarget="Farmacia" x="640" y="502" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+        <only-from-outside>True</only-from-outside>
+      </enter-action>
+    </actions>
+  </geoelement>
+  <geoelement id="MuseoArqueologia1">
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <geometries>
+      <geometry influence="10">
+        <Point>
+          <pos>40,449020173174 -3,73405527108644</pos>
+        </Point>
+      </geometry>
+    </geometries>
+    <actions>
+      <enter-action>
+        <effect>
+          <trigger-scene idTarget="EntradaHistoria1" x="1024" y="1152" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+        <only-from-outside>True</only-from-outside>
+      </enter-action>
+    </actions>
+  </geoelement>
+  <geoelement id="MuseoArqueologia2">
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <geometries>
+      <geometry influence="10">
+        <Point>
+          <pos>40,4486629774225 -3,7343610429139</pos>
+        </Point>
+      </geometry>
+    </geometries>
+    <actions>
+      <enter-action>
+        <effect>
+          <trigger-scene idTarget="EntradaHistoria2" x="1024" y="1152" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+        <only-from-outside>True</only-from-outside>
+      </enter-action>
+    </actions>
+  </geoelement>
   <geoelement id="MuseoInformatica">
     <description>
       <name>
@@ -560,276 +799,22 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       </exit-action>
     </actions>
   </geoelement>
-  <geoelement id="MuseoArqueologia">
-    <description>
-      <name>
-      </name>
-      <brief>
-      </brief>
-      <detailed>
-      </detailed>
-    </description>
-    <geometries>
-      <geometry influence="5">
-        <Polygon>
-          <exterior>
-            <LinearRing>
-              <posList>40,4491181473602 -3,72972618573604 40,4485384685168 -3,72959743970335 40,4483996714321 -3,73126040929258 40,4489630225259 -3,73133551114499</posList>
-            </LinearRing>
-          </exterior>
-        </Polygon>
-      </geometry>
-    </geometries>
-    <actions>
-      <enter-action>
-        <effect>
-          <trigger-scene idTarget="Historia" x="1024" y="1152" transitionTime="0" transitionType="0" />
-          <condition />
-        </effect>
-        <only-from-outside>True</only-from-outside>
-      </enter-action>
-    </actions>
-  </geoelement>
-  <geoelement id="MuseoDrogas">
-    <description>
-      <name>
-      </name>
-      <brief>
-      </brief>
-      <detailed>
-      </detailed>
-    </description>
-    <geometries>
-      <geometry influence="10">
-        <Polygon>
-          <exterior>
-            <LinearRing>
-              <posList>40,4458441209428 -3,72579943173835 40,444970475965 -3,72554193967291 40,4448071765787 -3,72693668836065 40,4456971534232 -3,72706543439337</posList>
-            </LinearRing>
-          </exterior>
-        </Polygon>
-      </geometry>
-    </geometries>
-    <actions>
-      <enter-action>
-        <effect>
-          <trigger-scene idTarget="Farmacia" x="640" y="502" transitionTime="0" transitionType="0" />
-          <condition />
-        </effect>
-        <only-from-outside>True</only-from-outside>
-      </enter-action>
-    </actions>
-  </geoelement>
-  <geoelement id="CaballoFarmacia">
-    <description>
-      <name>
-      </name>
-      <brief>
-      </brief>
-      <detailed>
-      </detailed>
-    </description>
-    <geometries>
-      <geometry influence="10">
-        <Point>
-          <pos>40,4437987940793 -3,72606228822173</pos>
-        </Point>
-      </geometry>
-    </geometries>
-    <actions>
-      <enter-action>
-        <effect>
-          <navigate navigation-type="Ordered">
-            <step locks="False">MuseoDrogas</step>
-          </navigate>
-          <condition />
-        </effect>
-        <only-from-outside>True</only-from-outside>
-      </enter-action>
-    </actions>
-  </geoelement>
-  <geoelement id="GeoArbolFarmacia">
-    <description>
-      <name>
-      </name>
-      <brief>
-      </brief>
-      <detailed>
-      </detailed>
-    </description>
-    <geometries>
-      <geometry influence="20">
-        <Point>
-          <pos>40,4448153415575 -3,72689913743432</pos>
-        </Point>
-      </geometry>
-    </geometries>
-    <actions>
-      <enter-action>
-        <effect>
-          <generate-object idTarget="PosteCorreos" />
-          <condition />
-          <activate flag="PistaCorreosActiva" />
-          <condition />
-        </effect>
-        <only-from-outside>True</only-from-outside>
-      </enter-action>
-    </actions>
-  </geoelement>
-  <geoelement id="GeoCorreos">
-    <description>
-      <name>
-      </name>
-      <brief>
-      </brief>
-      <detailed>
-      </detailed>
-    </description>
-    <geometries>
-      <geometry influence="5">
-        <Point>
-          <pos>40,4452419603226 -3,72729073995059</pos>
-        </Point>
-      </geometry>
-    </geometries>
-    <actions>
-      <enter-action>
-        <effect>
-          <generate-object idTarget="CruceCarretera" />
-          <condition />
-          <activate flag="PistaCruceActiva" />
-          <condition />
-        </effect>
-        <only-from-outside>True</only-from-outside>
-      </enter-action>
-    </actions>
-  </geoelement>
-  <geoelement id="GeoCruce">
-    <description>
-      <name>
-      </name>
-      <brief>
-      </brief>
-      <detailed>
-      </detailed>
-    </description>
-    <geometries>
-      <geometry influence="10">
-        <Point>
-          <pos>40,4479138793842 -3,72813295358134</pos>
-        </Point>
-      </geometry>
-    </geometries>
-    <actions>
-      <enter-action>
-        <effect>
-          <generate-object idTarget="CartelesTrafico" />
-          <condition />
-          <activate flag="PistaSenyalActiva" />
-          <condition />
-        </effect>
-        <only-from-outside>True</only-from-outside>
-      </enter-action>
-    </actions>
-  </geoelement>
-  <geoelement id="GeoSenyal">
-    <description>
-      <name>
-      </name>
-      <brief>
-      </brief>
-      <detailed>
-      </detailed>
-    </description>
-    <geometries>
-      <geometry influence="10">
-        <Point>
-          <pos>40,4481649404159 -3,72944187158067</pos>
-        </Point>
-      </geometry>
-    </geometries>
-    <actions>
-      <enter-action>
-        <effect>
-          <generate-object idTarget="EscalerasCalle" />
-          <condition />
-          <activate flag="PistaEscalerasActiva" />
-          <condition />
-        </effect>
-        <only-from-outside>True</only-from-outside>
-      </enter-action>
-    </actions>
-  </geoelement>
-  <geoelement id="GeoEscaleras">
-    <description>
-      <name>
-      </name>
-      <brief>
-      </brief>
-      <detailed>
-      </detailed>
-    </description>
-    <geometries>
-      <geometry influence="10">
-        <Point>
-          <pos>40,4478322333107 -3,73270343774267</pos>
-        </Point>
-      </geometry>
-    </geometries>
-    <actions>
-      <enter-action>
-        <effect>
-          <generate-object idTarget="FachadaHistoria1" />
-          <condition />
-          <generate-object idTarget="FachadaHistoria2" />
-          <condition />
-        </effect>
-        <only-from-outside>True</only-from-outside>
-      </enter-action>
-    </actions>
-  </geoelement>
-  <geoelement id="GeoTunel">
-    <description>
-      <name>
-      </name>
-      <brief>
-      </brief>
-      <detailed>
-      </detailed>
-    </description>
-    <geometries>
-      <geometry influence="10">
-        <Point>
-          <pos>40,4491793807486 -3,73383801215597</pos>
-        </Point>
-      </geometry>
-    </geometries>
-    <actions />
-  </geoelement>
-  <geoelement id="GeoEntradaBosque">
-    <description>
-      <name>
-      </name>
-      <brief>
-      </brief>
-      <detailed>
-      </detailed>
-    </description>
-    <geometries>
-      <geometry influence="5">
-        <Point>
-          <pos>40,4501182857215 -3,7342618011803</pos>
-        </Point>
-      </geometry>
-    </geometries>
-    <actions />
-  </geoelement>
-  <graph-conversation id="ConversationId">
+  <graph-conversation id="Intro">
     <dialogue-node nodeindex="0" editor-x="104" editor-y="98">
       <speak-char idTarget="Professor">
         <resources name="No name" />
-        <text>Ve en la dirección del trasero del caballo.</text>
+        <text>Busca el caballo en los alrededores del metro.</text>
       </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Una vez allí, dirígete al norte.</text>
+      </speak-char>
+      <condition />
+      <speak-player>
+        <resources name="No name" />
+        <text>Allí estará la primera facultad que queremos enseñarte.</text>
+      </speak-player>
       <condition />
       <end-conversation />
     </dialogue-node>
@@ -870,6 +855,30 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       <detailed>
       </detailed>
     </description>
+    <actions>
+      <grab needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <inactive flag="PistaCorreosActiva" />
+        </condition>
+        <effect>
+          <remove-element idTarget="PosteCorreos" />
+          <condition />
+          <generate-object idTarget="PosteCorreos" />
+          <condition />
+          <activate flag="PistaCorreosActiva" />
+          <condition />
+        </effect>
+      </grab>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <active flag="PistaCorreosActiva" />
+        </condition>
+        <effect>
+          <trigger-scene idTarget="EscenaPosteCorreos" x="768" y="1536" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+      </use>
+    </actions>
   </object>
   <object id="CruceCarretera" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
     <resources name="No name">
@@ -884,6 +893,30 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       <detailed>
       </detailed>
     </description>
+    <actions>
+      <grab needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <inactive flag="PistaCruceActiva" />
+        </condition>
+        <effect>
+          <remove-element idTarget="CruceCarretera" />
+          <condition />
+          <generate-object idTarget="CruceCarretera" />
+          <condition />
+          <activate flag="PistaCruceActiva" />
+          <condition />
+        </effect>
+      </grab>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <active flag="PistaCruceActiva" />
+        </condition>
+        <effect>
+          <trigger-scene idTarget="EscenaCruceCarretera" x="1024" y="1152" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+      </use>
+    </actions>
   </object>
   <object id="CartelesTrafico" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
     <resources name="No name">
@@ -898,6 +931,30 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       <detailed>
       </detailed>
     </description>
+    <actions>
+      <grab needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <inactive flag="PistaSenyalActiva" />
+        </condition>
+        <effect>
+          <remove-element idTarget="CartelesTrafico" />
+          <condition />
+          <generate-object idTarget="CartelesTrafico" />
+          <condition />
+          <activate flag="PistaSenyalActiva" />
+          <condition />
+        </effect>
+      </grab>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <active flag="PistaSenyalActiva" />
+        </condition>
+        <effect>
+          <trigger-scene idTarget="EscenaCarteles" x="768" y="1536" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+      </use>
+    </actions>
   </object>
   <object id="EscalerasCalle" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
     <resources name="No name">
@@ -912,6 +969,30 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       <detailed>
       </detailed>
     </description>
+    <actions>
+      <grab needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <inactive flag="PistaEscalerasActiva" />
+        </condition>
+        <effect>
+          <remove-element idTarget="EscalerasCalle" />
+          <condition />
+          <generate-object idTarget="EscalerasCalle" />
+          <condition />
+          <activate flag="PistaEscalerasActiva" />
+          <condition />
+        </effect>
+      </grab>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <active flag="PistaEscalerasActiva" />
+        </condition>
+        <effect>
+          <trigger-scene idTarget="EscenaEscaleras" x="1024" y="1152" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+      </use>
+    </actions>
   </object>
   <object id="FachadaHistoria1" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
     <resources name="No name">
@@ -926,6 +1007,32 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       <detailed>
       </detailed>
     </description>
+    <actions>
+      <grab needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <inactive flag="PistaFachadaActiva" />
+        </condition>
+        <effect>
+          <remove-element idTarget="FachadaHistoria1" />
+          <condition />
+          <generate-object idTarget="FachadaHistoria1" />
+          <condition />
+          <activate flag="PistaFachadaActiva" />
+          <condition />
+          <generate-object idTarget="FachadaHistoria2" />
+          <condition />
+        </effect>
+      </grab>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <active flag="PistaFachadaActiva" />
+        </condition>
+        <effect>
+          <trigger-scene idTarget="EscenaFachadaHistoria1" x="1024" y="1152" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+      </use>
+    </actions>
   </object>
   <object id="FachadaHistoria2" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
     <resources name="No name">
@@ -940,6 +1047,17 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       <detailed>
       </detailed>
     </description>
+    <actions>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <active flag="PistaFachadaActiva" />
+        </condition>
+        <effect>
+          <trigger-scene idTarget="EscenaFachadaHistoria2" x="1024" y="1152" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+      </use>
+    </actions>
   </object>
   <object id="TunelHistoria" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
     <resources name="No name">
@@ -968,6 +1086,30 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       <detailed>
       </detailed>
     </description>
+    <actions>
+      <grab needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <inactive flag="PistaEntradaBosqueActiva" />
+        </condition>
+        <effect>
+          <remove-element idTarget="EntradaBosque" />
+          <condition />
+          <generate-object idTarget="EntradaBosque" />
+          <condition />
+          <activate flag="PistaEntradaBosqueActiva" />
+          <condition />
+        </effect>
+      </grab>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <active flag="PistaEntradaBosqueActiva" />
+        </condition>
+        <effect>
+          <trigger-scene idTarget="EscenaEntradaBosque" x="768" y="1536" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+      </use>
+    </actions>
   </object>
   <object id="SalidaBosque" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
     <resources name="No name">
@@ -982,6 +1124,30 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       <detailed>
       </detailed>
     </description>
+    <actions>
+      <grab needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <inactive flag="PistaSalidaBosqueActiva" />
+        </condition>
+        <effect>
+          <remove-element idTarget="SalidaBosque" />
+          <condition />
+          <generate-object idTarget="SalidaBosque" />
+          <condition />
+          <activate flag="PistaSalidaBosqueActiva" />
+          <condition />
+        </effect>
+      </grab>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <active flag="PistaSalidaBosqueActiva" />
+        </condition>
+        <effect>
+          <trigger-scene idTarget="EscenaSalidaBosque" x="1024" y="1152" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+      </use>
+    </actions>
   </object>
   <object id="BotonVolver" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
     <resources name="No name">
