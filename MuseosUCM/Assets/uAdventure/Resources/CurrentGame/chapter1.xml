@@ -49,6 +49,61 @@
       <asset type="walkleft" uri="assets/special/EmptyAnimation" />
     </resources>
     <textcolor showsSpeechBubble="no" bubbleBkgColor="#FFFFFF" bubbleBorderColor="#000000">
+      <frontcolor color="#D9802E" />
+      <bordercolor color="#000000" />
+    </textcolor>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <voice name="" synthesizeAlways="no" />
+    <actions>
+      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>IntroFarmacia</documentation>
+        <condition>
+          <inactive flag="IntroFarmacia" />
+          <active flag="FarmaciaEncontrada" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="IntroFarmacia" />
+          <condition />
+        </effect>
+      </talk-to>
+      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Dino</documentation>
+        <condition>
+          <active flag="IntroFarmacia" />
+          <active flag="FarmaciaEscenaFinal" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="ConverProfesorDino" />
+          <condition />
+        </effect>
+      </talk-to>
+    </actions>
+  </character>
+  <character id="Dino" behaviour="normal">
+    <resources name="No name">
+      <asset type="standup" uri="assets/special/EmptyAnimation" />
+      <asset type="standdown" uri="assets/animation/DinoAnim.eaa.xml" />
+      <asset type="standright" uri="assets/special/EmptyAnimation" />
+      <asset type="standleft" uri="assets/special/EmptyAnimation" />
+      <asset type="speakup" uri="assets/special/EmptyAnimation" />
+      <asset type="speakdown" uri="assets/special/EmptyAnimation" />
+      <asset type="speakright" uri="assets/special/EmptyAnimation" />
+      <asset type="speakleft" uri="assets/special/EmptyAnimation" />
+      <asset type="useright" uri="assets/special/EmptyAnimation" />
+      <asset type="useleft" uri="assets/special/EmptyAnimation" />
+      <asset type="walkup" uri="assets/special/EmptyAnimation" />
+      <asset type="walkdown" uri="assets/special/EmptyAnimation" />
+      <asset type="walkright" uri="assets/special/EmptyAnimation" />
+      <asset type="walkleft" uri="assets/special/EmptyAnimation" />
+    </resources>
+    <textcolor showsSpeechBubble="no" bubbleBkgColor="#FFFFFF" bubbleBorderColor="#000000">
       <frontcolor color="#FFFFFF" />
       <bordercolor color="#000000" />
     </textcolor>
@@ -72,30 +127,32 @@
     </name>
     <default-initial-position x="400" y="450" />
     <objects>
-      <object-ref idTarget="BotonVolver" x="219" y="652" scale="1" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonVolver" x="219" y="652" scale="1" layer="1" hasInfluenceArea="no" />
     </objects>
-    <active-areas>
-      <active-area id="Test" rectangular="yes" x="250" y="158" width="750" height="327" hasInfluenceArea="no" behaviour="normal">
-        <description>
-          <name>
-          </name>
-          <brief>
-          </brief>
-          <detailed>
-          </detailed>
-        </description>
-        <actions>
-          <use needsGoTo="yes" keepDistance="35" not-effects="no">
-            <effect>
-              <activate flag="QRArbolFarmaciaActivo" />
-              <condition />
-              <generate-object idTarget="ArbolFarmacia" />
-              <condition />
-            </effect>
-          </use>
-        </actions>
-      </active-area>
-    </active-areas>
+    <characters>
+      <character-ref idTarget="Professor" x="595" y="668" scale="0.3804957" orientation="2" layer="0" hasInfluenceArea="no" />
+    </characters>
+  </scene>
+  <scene id="EscenaProfesorDino" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/fondoNegro.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+    <objects>
+      <object-ref idTarget="BotonVolver" x="49" y="170" scale="0.1859012" layer="0" hasInfluenceArea="no" />
+    </objects>
+    <characters>
+      <character-ref idTarget="Professor" x="243" y="148" scale="0.137649" orientation="2" layer="2" hasInfluenceArea="no" />
+      <character-ref idTarget="Dino" x="126" y="151" scale="0.08846024" orientation="2" layer="1" hasInfluenceArea="no">
+        <condition>
+          <active flag="DinoAparece" />
+        </condition>
+      </character-ref>
+    </characters>
   </scene>
   <scene id="EscenaArbolFarmacia" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
     <documentation>
@@ -524,11 +581,27 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       </active-area>
     </active-areas>
   </scene>
-  <map-scene id="Ciu" cameraType="Aerial2D" renderStyle="Tile" tileMetaIdentifier="OSMTile" usesGameplayArea="no" gameplayArea="0 0 0 0" center="(40.4435919713227, -3.72659075261767)" zoom="19" start="yes">
-    <map-element targetId="Professor" layer="0" scale="0.07029052" orientation="2">
-      <condition />
+  <scene id="EscenaHuesos" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/fondoNegro.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+    <objects>
+      <object-ref idTarget="Hueso" x="215" y="163" scale="0.03825144" layer="1" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonVolver" x="60" y="169" scale="0.2538646" layer="0" hasInfluenceArea="no" />
+    </objects>
+  </scene>
+  <map-scene id="Ciu" cameraType="Aerial2D" renderStyle="Tile" tileMetaIdentifier="OSMTile" usesGameplayArea="no" gameplayArea="0 0 0 0" center="(40.4435104794203, -3.72671949864995)" zoom="19" start="yes">
+    <map-element targetId="Professor" layer="0" scale="0.08" orientation="2">
+      <condition>
+        <inactive flag="CaballoEncontrado" />
+      </condition>
       <ext-elem-ref transformManager="uAdventure.Geo.GeopositionedDescriptor">
-        <param name="Position">(40.4437675476074, -3.72678923606873)</param>
+        <param name="Position">(40.4436683654785, -3.72699856758118)</param>
         <param name="Rotation">0</param>
         <param name="InteractionRange">10</param>
         <param name="RevealOnlyOnRange">False</param>
@@ -536,8 +609,48 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
         <param name="RevealParticleTexture">leaf_particle.png</param>
         <actions>
           <enter-action>
+            <condition>
+              <inactive flag="ConverIntro" />
+            </condition>
             <effect>
               <trigger-conversation idTarget="Intro" />
+              <condition />
+            </effect>
+            <only-from-outside>True</only-from-outside>
+          </enter-action>
+          <enter-action>
+            <condition>
+              <active flag="ConverIntro" />
+            </condition>
+            <effect>
+              <trigger-conversation idTarget="PistaIntro" />
+              <condition />
+            </effect>
+            <only-from-outside>True</only-from-outside>
+          </enter-action>
+        </actions>
+      </ext-elem-ref>
+    </map-element>
+    <map-element targetId="Professor" layer="0" scale="0.08" orientation="2">
+      <condition>
+        <inactive flag="FarmaciaEncontrada" />
+      </condition>
+      <ext-elem-ref transformManager="uAdventure.Geo.GeopositionedDescriptor">
+        <param name="Position">(40.4437294006348, -3.72606229782104)</param>
+        <param name="Rotation">0</param>
+        <param name="InteractionRange">20</param>
+        <param name="RevealOnlyOnRange">True</param>
+        <param name="Hint">False</param>
+        <param name="RevealParticleTexture">leaf_particle.png</param>
+        <actions>
+          <enter-action>
+            <condition>
+              <inactive flag="CaballoEncontrado" />
+            </condition>
+            <effect>
+              <activate flag="CaballoEncontrado" />
+              <condition />
+              <trigger-conversation idTarget="ConverCaballo" />
               <condition />
             </effect>
             <only-from-outside>True</only-from-outside>
@@ -662,28 +775,6 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       </ext-elem-ref>
     </map-element>
   </map-scene>
-  <geoelement id="CaballoFarmacia">
-    <description>
-      <name>
-      </name>
-      <brief>
-      </brief>
-      <detailed>
-      </detailed>
-    </description>
-    <geometries>
-      <geometry influence="10">
-        <Point>
-          <pos>40,4437987940793 -3,72606228822173</pos>
-        </Point>
-      </geometry>
-    </geometries>
-    <actions>
-      <enter-action>
-        <only-from-outside>True</only-from-outside>
-      </enter-action>
-    </actions>
-  </geoelement>
   <geoelement id="MuseoDrogas">
     <description>
       <name>
@@ -703,6 +794,8 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
     <actions>
       <enter-action>
         <effect>
+          <activate flag="FarmaciaEncontrada" />
+          <condition />
           <trigger-scene idTarget="Farmacia" x="640" y="502" transitionTime="0" transitionType="0" />
           <condition />
         </effect>
@@ -800,22 +893,384 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
     </actions>
   </geoelement>
   <graph-conversation id="Intro">
-    <dialogue-node nodeindex="0" editor-x="104" editor-y="98">
+    <dialogue-node nodeindex="0" editor-x="152" editor-y="29">
       <speak-char idTarget="Professor">
         <resources name="No name" />
-        <text>Busca el caballo en los alrededores del metro.</text>
+        <text>Bienvenido Homo Sapiens Sapiens.</text>
       </speak-char>
       <condition />
       <speak-char idTarget="Professor">
         <resources name="No name" />
-        <text>Una vez allí, dirígete al norte.</text>
+        <text>El día de hoy serás partícipe de una gran aventura.</text>
       </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Mediante  un pequeño juego de buscar pistas y resolución de adivinanzas te divertirás a la vez que aprenderás cosas nuevas.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Quiero que veas alguno de los museos que esta gran Universidad contiene, pero no te diré cuáles son, tendrás que descubrirlo por ti mismo.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Para empezar, busca el caballo en los alrededores del metro.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Una vez allí, dirígete al norte y encontrarás la primera facultad.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Dentro de la facultad te esperan más pruebas</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name">
+          <asset type="image" uri="" />
+        </resources>
+        <text>¡Buena suerte!</text>
+      </speak-char>
+      <condition />
+      <end-conversation>
+        <effect>
+          <activate flag="ConverIntro" />
+          <condition />
+        </effect>
+      </end-conversation>
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="ConverCaballo">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>¡Bien!</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Veo que has encontrado al caballo</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text> ¿Quieres que te hable sobre él o prefieres continuar tu camino?</text>
+      </speak-char>
+      <condition />
+      <child nodeindex="1" />
+      <effect>
+        <activate flag="ConverCaballo" />
+        <condition />
+      </effect>
+    </dialogue-node>
+    <option-node nodeindex="1" keepShowing="yes" preListening="yes" editor-x="73" editor-y="297" x="73" y="297">
+      <speak-player>
+        <text>Prefiero seguir mi camino</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="2" />
+      <speak-player>
+        <text>Suena interesante. Cuéntame.</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="3" />
+    </option-node>
+    <dialogue-node nodeindex="2" editor-x="561" editor-y="282">
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Muy bien</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Te recuerdo que tienes que seguir el Norte desde esta estatua para llegar a la facultad.</text>
+      </speak-char>
+      <condition />
+      <end-conversation />
+    </dialogue-node>
+    <dialogue-node nodeindex="3" editor-x="522" editor-y="513">
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Esta escultura de aluminio fue un regalo dado a la ciudad de Madrid en 1955.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Su autora fue la estadounidense Anna Hyatt Huntington, </text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Desde entonces se colocó en la plaza de Ramón y Cajal, donde nos encontramos ahora.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>La estatua muestra a un joven a lomos de un caballo recogiendo una antorcha de manos de un débil anciano que yace en el suelo.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Representa la transmisión del conocimiento entre generaciones.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Te recomiendo dar una vuelta a su alrededor para observarla bien.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Pero recuerda, tienes que seguir el Norte desde esta estatua para encontrar la facultad.</text>
+      </speak-char>
+      <condition />
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="PistaIntro">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>El caballo debería verse desde aquí.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>¡Ánimo!</text>
+      </speak-char>
+      <condition />
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="IntroFarmacia">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>BIenvenido a Farmacia</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>A partir de aquí comenzará la Yincana de los museos.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Cuando te sientas preparado escanea al código QR que hay en la entrada.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Si no lo encuentras, pregunta al personal del centro, están aquí para ayudarte en lo que necesites.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Recuerda que aunque se trate de una Yincana estás un lugar público y debes respetar las normas, pero eso no le va a restar diversión al asunto.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>¡Buena suerte!</text>
+      </speak-char>
+      <condition />
+      <end-conversation>
+        <effect>
+          <activate flag="IntroFarmacia" />
+          <condition />
+          <activate flag="FarmaciaEscenaFinal" />
+          <condition />
+          <trigger-scene idTarget="EscenaProfesorDino" x="142" y="132" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+      </end-conversation>
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="ConverProfesorDino">
+    <dialogue-node nodeindex="0" editor-x="69" editor-y="86">
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>¡Muy bien!</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Has encontrado la pista final de este museo.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>A partir de aquí te dejaré con mi amigo Dino, él te ayudará a partir de aquí.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>¡Hasta luego, ha sido un placer!</text>
+      </speak-char>
+      <condition />
+      <child nodeindex="1" />
+      <effect>
+        <activate flag="DinoAparece" />
+        <condition />
+      </effect>
+    </dialogue-node>
+    <dialogue-node nodeindex="1" editor-x="445" editor-y="81">
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Gracias profesor</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Hola humano</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Yo soy Dino, un placer conocerte.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Espero que hayas aprendido mucho dentro de este museo.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Veo que has encontrado una pista bastante buena.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>A partir de este momento, las pistas te indicarán el camino.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Toma esta foto.</text>
+      </speak-char>
+      <condition />
+      <child nodeindex="2" />
+      <effect>
+        <generate-object idTarget="ArbolFarmacia" />
+        <condition />
+        <activate flag="QRArbolFarmaciaActivo" />
+        <condition />
+      </effect>
+    </dialogue-node>
+    <dialogue-node nodeindex="2" editor-x="93" editor-y="405">
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>En ella se observa un árbol.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Una vez lo encuentres, encontrarás tu siguiente pista.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Te otorgaré un hueso por cada pista que encuentres.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Èstos servirán para poder usar la bombilla que aparece en la imagen.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Recuerda usar los huesos solo cuando estés totalmente perdido.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Al final del juego ganará el que más objetos tenga.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Aquí tienes el primer hueso, puedes consultar cuántos huesos tienes en tu inventario.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Buena suerte y a divertirse ¡ROOOAAR!</text>
+      </speak-char>
+      <condition />
+      <end-conversation>
+        <effect>
+          <generate-object idTarget="Hueso" />
+          <condition />
+          <increment var="NumHuesos" value="1" />
+          <condition />
+        </effect>
+      </end-conversation>
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="CuentaHuesos">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="51">
+      <speak-player>
+        <resources name="No name" />
+        <text>Parece que hay...</text>
+      </speak-player>
       <condition />
       <speak-player>
         <resources name="No name" />
-        <text>Allí estará la primera facultad que queremos enseñarte.</text>
+        <text>Cero huesos</text>
       </speak-player>
-      <condition />
+      <condition>
+        <equals var="NumHuesos" value="0" />
+      </condition>
+      <speak-player>
+        <resources name="No name" />
+        <text>Un hueso</text>
+      </speak-player>
+      <condition>
+        <equals var="NumHuesos" value="1" />
+      </condition>
+      <speak-player>
+        <resources name="No name" />
+        <text>Dos huesos</text>
+      </speak-player>
+      <condition>
+        <equals var="NumHuesos" value="2" />
+      </condition>
+      <speak-player>
+        <resources name="No name" />
+        <text>Tres huesos</text>
+      </speak-player>
+      <condition>
+        <equals var="NumHuesos" value="3" />
+      </condition>
+      <speak-player>
+        <resources name="No name" />
+        <text>Cuatro huesos</text>
+      </speak-player>
+      <condition>
+        <equals var="NumHuesos" value="4" />
+      </condition>
+      <speak-player>
+        <resources name="No name" />
+        <text>Cinco huesos</text>
+      </speak-player>
+      <condition>
+        <equals var="NumHuesos" value="5" />
+      </condition>
+      <speak-player>
+        <resources name="No name" />
+        <text>Seis huesos</text>
+      </speak-player>
+      <condition>
+        <equals var="NumHuesos" value="6" />
+      </condition>
       <end-conversation />
     </dialogue-node>
   </graph-conversation>
@@ -867,6 +1322,8 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
           <condition />
           <activate flag="PistaCorreosActiva" />
           <condition />
+          <increment var="NumHuesos" value="1" />
+          <condition />
         </effect>
       </grab>
       <use needsGoTo="yes" keepDistance="35" not-effects="no">
@@ -904,6 +1361,8 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
           <generate-object idTarget="CruceCarretera" />
           <condition />
           <activate flag="PistaCruceActiva" />
+          <condition />
+          <increment var="NumHuesos" value="1" />
           <condition />
         </effect>
       </grab>
@@ -943,6 +1402,8 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
           <condition />
           <activate flag="PistaSenyalActiva" />
           <condition />
+          <increment var="NumHuesos" value="1" />
+          <condition />
         </effect>
       </grab>
       <use needsGoTo="yes" keepDistance="35" not-effects="no">
@@ -980,6 +1441,8 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
           <generate-object idTarget="EscalerasCalle" />
           <condition />
           <activate flag="PistaEscalerasActiva" />
+          <condition />
+          <increment var="NumHuesos" value="1" />
           <condition />
         </effect>
       </grab>
@@ -1020,6 +1483,8 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
           <activate flag="PistaFachadaActiva" />
           <condition />
           <generate-object idTarget="FachadaHistoria2" />
+          <condition />
+          <increment var="NumHuesos" value="1" />
           <condition />
         </effect>
       </grab>
@@ -1185,6 +1650,28 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       </detailed>
     </description>
   </object>
+  <object id="Hueso" returnsWhenDragged="yes" behaviour="normal" resources-transition-time="0">
+    <resources name="No name">
+      <asset type="image" uri="assets/image/hueso.png" />
+      <asset type="icon" uri="assets/special/EmptyIcon.png" />
+    </resources>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <actions>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <effect>
+          <trigger-conversation idTarget="CuentaHuesos" />
+          <condition />
+        </effect>
+      </use>
+    </actions>
+  </object>
   <qr-code id="ItemArbolFarmacia">
     <content>
     </content>
@@ -1192,9 +1679,9 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
     </documentation>
     <condition />
     <effect>
-      <generate-object idTarget="ArbolFarmacia" />
+      <trigger-scene idTarget="EscenaProfesorDino" x="142" y="132" transitionTime="0" transitionType="0" />
       <condition />
-      <activate flag="QRArbolFarmaciaActivo" />
+      <trigger-conversation idTarget="ConverProfesorDino" />
       <condition />
     </effect>
   </qr-code>
