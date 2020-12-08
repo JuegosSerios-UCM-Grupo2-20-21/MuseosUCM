@@ -181,6 +181,13 @@
           <condition />
         </effect>
       </talk-to>
+      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Created with target conversation: ResueltoPONG</documentation>
+        <effect>
+          <trigger-conversation idTarget="AdivinanzaResueltaFDI" />
+          <condition />
+        </effect>
+      </talk-to>
     </actions>
   </character>
   <scene id="Farmacia" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
@@ -435,7 +442,7 @@ A continuación, gira a la izquierda.</speak-player>
           <use needsGoTo="yes" keepDistance="35" not-effects="no">
             <effect>
               <speak-player>Entrada principal de la facultad de Geografía e Historia.
- Bajando por el camino desde las escaleras encontrarás la entrada a mano izquierda. </speak-player>
+ Bajando por el camino desde las escaleras encontrarás la entrada a mano izquierda.</speak-player>
               <condition />
             </effect>
           </use>
@@ -604,7 +611,7 @@ A continuación, gira a la izquierda.</speak-player>
       <character-ref idTarget="RAM" x="743" y="1331" scale="0.9488741" orientation="2" layer="0" hasInfluenceArea="no" />
     </characters>
   </scene>
-  <map-scene id="Ciu" cameraType="Aerial2D" renderStyle="Tile" tileMetaIdentifier="OSMTile" usesGameplayArea="no" gameplayArea="0 0 0 0" center="(40.4435660882768, -3.7267730736105)" zoom="17" start="yes">
+  <map-scene id="Ciu" cameraType="Aerial2D" renderStyle="Tile" tileMetaIdentifier="OSMTile" usesGameplayArea="no" gameplayArea="0 0 0 0" center="(40.4438559497666, -3.72701447242189)" zoom="18" start="yes">
     <map-element targetId="Professor" layer="0" scale="0.08" orientation="2">
       <condition>
         <inactive flag="CaballoEncontrado" />
@@ -1599,7 +1606,7 @@ A continuación, gira a la izquierda.</speak-player>
         <condition />
       </effect>
     </dialogue-node>
-    <dialogue-node nodeindex="1" editor-x="617" editor-y="56">
+    <dialogue-node nodeindex="1" editor-x="331" editor-y="21">
       <speak-char idTarget="RAM">
         <resources name="No name" />
         <text>01100001 01100010 01110010 01101001 01110010 00100000 01101101 01100101 01101110 01110011 01100001 01101010 01100101</text>
@@ -1622,7 +1629,7 @@ A continuación, gira a la izquierda.</speak-player>
       <condition />
       <speak-char idTarget="RAM">
         <resources name="No name" />
-        <text>Tendrás que encontrar las sucesivas pistas para llegar hasta la última facultad</text>
+        <text>Tendrás que encontrar las sucesivas pistas para llegar hasta la última facultad.</text>
       </speak-char>
       <condition />
       <speak-char idTarget="RAM">
@@ -1825,6 +1832,75 @@ A continuación, gira a la izquierda.</speak-player>
   </graph-conversation>
   <graph-conversation id="IntroFDI">
     <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>01100001 01100010 01110010 01101001 01110010 00100000 01101101 01100101 01101110 01110011 01100001 01101010 01100101</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>Por fin has llegado. </text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>Ya sabes, escanea el código QR de la entrada.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>Te dará una pista para encontrar a un compañero mío.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>Si no lo distingues de los demás, usa uno de los bitcoins que tienes.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>¡Nos vemos cuando hayas terminado!</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>01100011 01100101 01110010 01110010 01100001 01110010 00100000 01101101 01100101 01101110 01110011 01100001 01101010 01100101</text>
+      </speak-char>
+      <condition />
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="AdivinanzaResueltaFDI">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>¡Ya queda menos!</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>Ahora que has encontrado el Home Pong, te propongo que busques este otro compañero:</text>
+      </speak-char>
+      <condition>
+        <inactive flag="PongResuelto" />
+      </condition>
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>Solo falta uno de mis hermanos. ¿Podrás encontrarlo?</text>
+      </speak-char>
+      <condition>
+        <inactive flag="RecreativaResuelto" />
+        <active flag="PongResuelto" />
+      </condition>
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>Vuelve al lugar de comienzo para terminar. ¡Corre, puede que seas el primero!</text>
+      </speak-char>
+      <condition>
+        <active flag="PongResuelto" />
+        <active flag="RecreativaResuelto" />
+        <inactive flag="AppleResuelto" />
+      </condition>
       <end-conversation />
     </dialogue-node>
   </graph-conversation>
@@ -2524,6 +2600,58 @@ A continuación, gira a la izquierda.</speak-player>
     <condition />
     <effect>
       <trigger-scene idTarget="EscenaDinoRAM" x="142" y="132" transitionTime="0" transitionType="0" />
+      <condition />
+    </effect>
+  </qr-code>
+  <qr-code id="EntradaInformatica">
+    <content>
+    </content>
+    <documentation>
+    </documentation>
+    <condition />
+    <effect>
+      <show-text x="300" y="300" frontColor="#74A3DDFF" borderColor="#524B4BFF" uri="">Tic toc, hace el reloj.
+TikTok hacen los jóvenes
+Y este, que es más viejo,
+Solo hace "ping, PONG".
+
+Busca esta videoconsola, y te llevará a la siguiente pista.</show-text>
+      <condition />
+    </effect>
+  </qr-code>
+  <qr-code id="PistaPONGAtari">
+    <content>
+    </content>
+    <documentation>
+    </documentation>
+    <condition />
+    <effect>
+      <trigger-conversation idTarget="AdivinanzaResueltaFDI" />
+      <condition />
+      <show-text x="300" y="300" frontColor="#74A3DDFF" borderColor="#524B4BFF" uri="">Ni Microsoft ni Sony le hacen temer;
+Con palancas y botones,
+La gente hacía cola a montones.
+No por nada se llama "Líder".</show-text>
+      <condition />
+      <activate flag="PongResuelto" />
+      <condition />
+    </effect>
+  </qr-code>
+  <qr-code id="PistaRecreativaLider">
+    <content>
+    </content>
+    <documentation>
+    </documentation>
+    <condition />
+    <effect>
+      <trigger-conversation idTarget="AdivinanzaResueltaFDI" />
+      <condition />
+      <show-text x="300" y="300" frontColor="#709ED6FF" borderColor="#4E4848FF" uri="">Esta manzana 
+No me quitará el hambre.
+Después de la de Adán y Eva
+Esta fue la primera.</show-text>
+      <condition />
+      <activate flag="RecreativaResuelto" />
       <condition />
     </effect>
   </qr-code>
