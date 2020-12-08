@@ -48,9 +48,9 @@
       <asset type="walkright" uri="assets/special/EmptyAnimation" />
       <asset type="walkleft" uri="assets/special/EmptyAnimation" />
     </resources>
-    <textcolor showsSpeechBubble="no" bubbleBkgColor="#FFFFFF" bubbleBorderColor="#000000">
-      <frontcolor color="#D9802E" />
-      <bordercolor color="#000000" />
+    <textcolor showsSpeechBubble="yes" bubbleBkgColor="#FFFFFF" bubbleBorderColor="#000000">
+      <frontcolor color="#000000" />
+      <bordercolor color="#AD6161" />
     </textcolor>
     <description>
       <name>
@@ -104,8 +104,8 @@
       <asset type="walkleft" uri="assets/special/EmptyAnimation" />
     </resources>
     <textcolor showsSpeechBubble="no" bubbleBkgColor="#FFFFFF" bubbleBorderColor="#000000">
-      <frontcolor color="#FFFFFF" />
-      <bordercolor color="#000000" />
+      <frontcolor color="#000000" />
+      <bordercolor color="#7D86B0" />
     </textcolor>
     <description>
       <name>
@@ -116,6 +116,72 @@
       </detailed>
     </description>
     <voice name="" synthesizeAlways="no" />
+    <actions>
+      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <active flag="HistoriaEncontrada" />
+          <inactive flag="IntroHistoria" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="IntroHistoria" />
+          <condition />
+        </effect>
+      </talk-to>
+      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Created with target conversation: ConverDinoRAM</documentation>
+        <condition>
+          <active flag="IntroHistoria" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="ConverDinoRAM" />
+          <condition />
+        </effect>
+      </talk-to>
+    </actions>
+  </character>
+  <character id="RAM" behaviour="normal">
+    <resources name="No name">
+      <asset type="standup" uri="assets/special/EmptyAnimation" />
+      <asset type="standdown" uri="assets/animation/RamAnim.eaa.xml" />
+      <asset type="standright" uri="assets/special/EmptyAnimation" />
+      <asset type="standleft" uri="assets/special/EmptyAnimation" />
+      <asset type="speakup" uri="assets/special/EmptyAnimation" />
+      <asset type="speakdown" uri="assets/special/EmptyAnimation" />
+      <asset type="speakright" uri="assets/special/EmptyAnimation" />
+      <asset type="speakleft" uri="assets/special/EmptyAnimation" />
+      <asset type="useright" uri="assets/special/EmptyAnimation" />
+      <asset type="useleft" uri="assets/special/EmptyAnimation" />
+      <asset type="walkup" uri="assets/special/EmptyAnimation" />
+      <asset type="walkdown" uri="assets/special/EmptyAnimation" />
+      <asset type="walkright" uri="assets/special/EmptyAnimation" />
+      <asset type="walkleft" uri="assets/special/EmptyAnimation" />
+    </resources>
+    <textcolor showsSpeechBubble="no" bubbleBkgColor="#FFFFFF" bubbleBorderColor="#000000">
+      <frontcolor color="#000000" />
+      <bordercolor color="#659A66" />
+    </textcolor>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <voice name="" synthesizeAlways="no" />
+    <actions>
+      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Created with target conversation: IntroFDI</documentation>
+        <condition>
+          <active flag="FDIEncontrada" />
+          <inactive flag="IntroFDI" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="IntroFDI" />
+          <condition />
+        </effect>
+      </talk-to>
+    </actions>
   </character>
   <scene id="Farmacia" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
     <documentation>
@@ -126,9 +192,6 @@
     <name>
     </name>
     <default-initial-position x="400" y="450" />
-    <objects>
-      <object-ref idTarget="BotonVolver" x="219" y="652" scale="1" layer="1" hasInfluenceArea="no" />
-    </objects>
     <characters>
       <character-ref idTarget="Professor" x="595" y="668" scale="0.3804957" orientation="2" layer="0" hasInfluenceArea="no" />
     </characters>
@@ -165,10 +228,13 @@
     <default-initial-position x="400" y="450" />
     <objects>
       <object-ref idTarget="BotonVolver" x="309" y="2048" scale="1.432168" layer="1" hasInfluenceArea="no" />
-      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="108" y="230" scale="0.2287648" layer="0" hasInfluenceArea="no" />
     </objects>
     <active-areas>
       <active-area id="AbrirPista" rectangular="yes" x="22" y="18" width="152" height="216" hasInfluenceArea="no" behaviour="first-action">
+        <condition>
+          <active flag="PistaArbol" />
+        </condition>
         <description>
           <name>
           </name>
@@ -203,6 +269,9 @@
     </objects>
     <active-areas>
       <active-area id="AbrirPistaCorreos" rectangular="yes" x="15" y="23" width="160" height="212" hasInfluenceArea="no" behaviour="normal">
+        <condition>
+          <active flag="PistaCorreos" />
+        </condition>
         <description>
           <name>
           </name>
@@ -215,7 +284,7 @@
           <use needsGoTo="yes" keepDistance="35" not-effects="no">
             <effect>
               <speak-player>Este poste de correos está en la calle principal de la Complutense (C/Avenida Complutense).
-Según sales de Farmacia hacia la derecha.</speak-player>
+Siguiendo el camino que baja desde el árbol y luego a mano derecha.</speak-player>
               <condition />
             </effect>
           </use>
@@ -238,6 +307,9 @@ Según sales de Farmacia hacia la derecha.</speak-player>
     </objects>
     <active-areas>
       <active-area id="AbrirPistaCruce" rectangular="yes" x="21" y="20" width="151" height="201" hasInfluenceArea="no" behaviour="normal">
+        <condition>
+          <active flag="PistaCruce" />
+        </condition>
         <description>
           <name>
           </name>
@@ -249,7 +321,8 @@ Según sales de Farmacia hacia la derecha.</speak-player>
         <actions>
           <use needsGoTo="yes" keepDistance="35" not-effects="no">
             <effect>
-              <speak-player>Tienes que cruzar la calle respecto al buzón de correos y seguir caminando recto por Avenida Complutense.</speak-player>
+              <speak-player>Continúa por la avenida y cruza en el primer semáforo que te encuentras tras el buzón.
+ Luego, hacia la derecha, continúa la calle.</speak-player>
               <condition />
             </effect>
           </use>
@@ -272,6 +345,9 @@ Según sales de Farmacia hacia la derecha.</speak-player>
     </objects>
     <active-areas>
       <active-area id="AbrirPistaCarteles" rectangular="yes" x="20" y="22" width="148" height="206" hasInfluenceArea="no" behaviour="normal">
+        <condition>
+          <active flag="PistaCarteles" />
+        </condition>
         <description>
           <name>
           </name>
@@ -283,7 +359,8 @@ Según sales de Farmacia hacia la derecha.</speak-player>
         <actions>
           <use needsGoTo="yes" keepDistance="35" not-effects="no">
             <effect>
-              <speak-player>En la calle de la izquierda del cruce.</speak-player>
+              <speak-player>Cruza el semáforo que se ve en la foto anterior.
+A continuación, gira a la izquierda.</speak-player>
               <condition />
             </effect>
           </use>
@@ -305,7 +382,10 @@ Según sales de Farmacia hacia la derecha.</speak-player>
       <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
     </objects>
     <active-areas>
-      <active-area id="AbrirPistaEscaleras" rectangular="yes" x="25" y="24" width="145" height="196" hasInfluenceArea="no" behaviour="normal">
+      <active-area id="AbrirPistaEscaleras" rectangular="yes" x="25" y="28" width="145" height="196" hasInfluenceArea="no" behaviour="normal">
+        <condition>
+          <active flag="PistaEscaleras" />
+        </condition>
         <description>
           <name>
           </name>
@@ -340,6 +420,9 @@ Según sales de Farmacia hacia la derecha.</speak-player>
     </objects>
     <active-areas>
       <active-area id="AbrirPistaFachadaHistoria1" rectangular="yes" x="23" y="21" width="154" height="196" hasInfluenceArea="no" behaviour="normal">
+        <condition>
+          <active flag="PistaFachada1" />
+        </condition>
         <description>
           <name>
           </name>
@@ -352,46 +435,7 @@ Según sales de Farmacia hacia la derecha.</speak-player>
           <use needsGoTo="yes" keepDistance="35" not-effects="no">
             <effect>
               <speak-player>Entrada principal de la facultad de Geografía e Historia.
-Hay que bajar la cuesta hacia la derecha.
-
-Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
-              <condition />
-            </effect>
-          </use>
-        </actions>
-      </active-area>
-    </active-areas>
-  </scene>
-  <scene id="EscenaFachadaHistoria2" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
-    <documentation>
-    </documentation>
-    <resources name="No name">
-      <asset type="background" uri="assets/background/IMG_20201204_123841.jpg" />
-    </resources>
-    <name>
-    </name>
-    <default-initial-position x="400" y="450" />
-    <objects>
-      <object-ref idTarget="BotonVolver" x="242" y="1537" scale="1.074126" layer="1" hasInfluenceArea="no" />
-      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
-    </objects>
-    <active-areas>
-      <active-area id="AbrirPistaFachadaHistoria2" rectangular="yes" x="16" y="16" width="169" height="217" hasInfluenceArea="no" behaviour="normal">
-        <description>
-          <name>
-          </name>
-          <brief>
-          </brief>
-          <detailed>
-          </detailed>
-        </description>
-        <actions>
-          <use needsGoTo="yes" keepDistance="35" not-effects="no">
-            <effect>
-              <speak-player>No es la entrada principal pero está al lado, un poco más a la izquierda.
-Hay que bajar la cuesta hacia la derecha.
-
-Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
+ Bajando por el camino desde las escaleras encontrarás la entrada a mano izquierda. </speak-player>
               <condition />
             </effect>
           </use>
@@ -414,6 +458,9 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
     </objects>
     <active-areas>
       <active-area id="AbrirPistaTunel" rectangular="yes" x="23" y="17" width="160" height="204" hasInfluenceArea="no" behaviour="normal">
+        <condition>
+          <active flag="PistaTunel" />
+        </condition>
         <description>
           <name>
           </name>
@@ -425,7 +472,7 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
         <actions>
           <use needsGoTo="yes" keepDistance="35" not-effects="no">
             <effect>
-              <speak-player>El túnel está situado a la derecha de la entrada principal al edificio.</speak-player>
+              <speak-player>El túnel se encuentra a la izquierda según sales por la entrada principal.</speak-player>
               <condition />
             </effect>
           </use>
@@ -448,6 +495,9 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
     </objects>
     <active-areas>
       <active-area id="AbrirPistaEntradaBosque" rectangular="yes" x="18" y="19" width="164" height="214" hasInfluenceArea="no" behaviour="normal">
+        <condition>
+          <active flag="PistaEntradaBosque" />
+        </condition>
         <description>
           <name>
           </name>
@@ -482,6 +532,9 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
     </objects>
     <active-areas>
       <active-area id="AbrirPistaSalidaBosque" rectangular="yes" x="18" y="19" width="157" height="214" hasInfluenceArea="no" behaviour="normal">
+        <condition>
+          <active flag="PistaSalidaBosque" />
+        </condition>
         <description>
           <name>
           </name>
@@ -501,16 +554,6 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       </active-area>
     </active-areas>
   </scene>
-  <scene id="FDI" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
-    <documentation>
-    </documentation>
-    <resources name="No name">
-      <asset type="background" uri="assets/background/Fdi_ucm.jpg" />
-    </resources>
-    <name>
-    </name>
-    <default-initial-position x="400" y="450" />
-  </scene>
   <scene id="EntradaHistoria1" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
     <documentation>
     </documentation>
@@ -521,67 +564,13 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
     </name>
     <default-initial-position x="400" y="450" />
     <objects>
-      <object-ref idTarget="BotonVolver" x="470" y="1505" scale="2.041802" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonVolver" x="1621" y="1520" scale="2.041802" layer="1" hasInfluenceArea="no" />
     </objects>
-    <active-areas>
-      <active-area id="TestGeo1" rectangular="yes" x="220" y="220" width="1699" height="669" hasInfluenceArea="no" behaviour="normal">
-        <description>
-          <name>
-          </name>
-          <brief>
-          </brief>
-          <detailed>
-          </detailed>
-        </description>
-        <actions>
-          <use needsGoTo="yes" keepDistance="35" not-effects="no">
-            <effect>
-              <generate-object idTarget="TunelHistoria" />
-              <condition />
-              <activate flag="QRTunelActivo" />
-              <condition />
-            </effect>
-          </use>
-        </actions>
-      </active-area>
-    </active-areas>
+    <characters>
+      <character-ref idTarget="Dino" x="609" y="1524" scale="0.9193273" orientation="2" layer="0" hasInfluenceArea="no" />
+    </characters>
   </scene>
-  <scene id="EntradaHistoria2" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
-    <documentation>
-    </documentation>
-    <resources name="No name">
-      <asset type="background" uri="assets/background/IMG_20201204_123841.jpg" />
-    </resources>
-    <name>
-    </name>
-    <default-initial-position x="400" y="450" />
-    <objects>
-      <object-ref idTarget="BotonVolver" x="403" y="1529" scale="1.884658" layer="0" hasInfluenceArea="no" />
-    </objects>
-    <active-areas>
-      <active-area id="TestGeo2" rectangular="yes" x="448" y="442" width="1091" height="446" hasInfluenceArea="no" behaviour="normal">
-        <description>
-          <name>
-          </name>
-          <brief>
-          </brief>
-          <detailed>
-          </detailed>
-        </description>
-        <actions>
-          <use needsGoTo="yes" keepDistance="35" not-effects="no">
-            <effect>
-              <generate-object idTarget="TunelHistoria" />
-              <condition />
-              <activate flag="QRTunelActivo" />
-              <condition />
-            </effect>
-          </use>
-        </actions>
-      </active-area>
-    </active-areas>
-  </scene>
-  <scene id="EscenaHuesos" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+  <scene id="EscenaDinoRAM" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
     <documentation>
     </documentation>
     <resources name="No name">
@@ -591,11 +580,31 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
     </name>
     <default-initial-position x="400" y="450" />
     <objects>
-      <object-ref idTarget="Hueso" x="215" y="163" scale="0.03825144" layer="1" hasInfluenceArea="no" />
-      <object-ref idTarget="BotonVolver" x="60" y="169" scale="0.2538646" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonVolver" x="57" y="170" scale="0.2449053" layer="0" hasInfluenceArea="no" />
     </objects>
+    <characters>
+      <character-ref idTarget="Dino" x="98" y="138" scale="0.0846855" orientation="2" layer="2" hasInfluenceArea="no" />
+      <character-ref idTarget="RAM" x="205" y="136" scale="0.1353499" orientation="2" layer="1" hasInfluenceArea="no">
+        <condition>
+          <active flag="RAMAparece" />
+        </condition>
+      </character-ref>
+    </characters>
   </scene>
-  <map-scene id="Ciu" cameraType="Aerial2D" renderStyle="Tile" tileMetaIdentifier="OSMTile" usesGameplayArea="no" gameplayArea="0 0 0 0" center="(40.4435104794203, -3.72671949864995)" zoom="19" start="yes">
+  <scene id="FDI" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/IMG_20201204_125332.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+    <characters>
+      <character-ref idTarget="RAM" x="743" y="1331" scale="0.9488741" orientation="2" layer="0" hasInfluenceArea="no" />
+    </characters>
+  </scene>
+  <map-scene id="Ciu" cameraType="Aerial2D" renderStyle="Tile" tileMetaIdentifier="OSMTile" usesGameplayArea="no" gameplayArea="0 0 0 0" center="(40.4435660882768, -3.7267730736105)" zoom="17" start="yes">
     <map-element targetId="Professor" layer="0" scale="0.08" orientation="2">
       <condition>
         <inactive flag="CaballoEncontrado" />
@@ -724,7 +733,7 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
         <active flag="PistaEscalerasActiva" />
       </condition>
       <ext-elem-ref transformManager="uAdventure.Geo.GeopositionedDescriptor">
-        <param name="Position">(40.4477729797363, -3.73270344734192)</param>
+        <param name="Position">(40.4477653503418, -3.73270606994629)</param>
         <param name="Rotation">0</param>
         <param name="InteractionRange">10</param>
         <param name="RevealOnlyOnRange">True</param>
@@ -736,11 +745,7 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
     <map-element targetId="MuseoArqueologia1" layer="0" scale="1" orientation="2">
       <condition>
         <inactive flag="QRTunelActivo" />
-      </condition>
-    </map-element>
-    <map-element targetId="MuseoArqueologia2" layer="0" scale="1" orientation="2">
-      <condition>
-        <inactive flag="QRTunelActivo" />
+        <active flag="QRArbolFarmaciaActivo" />
       </condition>
     </map-element>
     <map-element targetId="EntradaBosque" layer="0" scale="0.03" orientation="2">
@@ -758,7 +763,10 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       </ext-elem-ref>
     </map-element>
     <map-element targetId="MuseoInformatica" layer="0" scale="1" orientation="2">
-      <condition />
+      <condition>
+        <active flag="QRTunelActivo" />
+        <inactive flag="QRFinal" />
+      </condition>
     </map-element>
     <map-element targetId="SalidaBosque" layer="0" scale="0.03" orientation="2">
       <condition>
@@ -822,33 +830,9 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
     <actions>
       <enter-action>
         <effect>
-          <trigger-scene idTarget="EntradaHistoria1" x="1024" y="1152" transitionTime="0" transitionType="0" />
+          <activate flag="HistoriaEncontrada" />
           <condition />
-        </effect>
-        <only-from-outside>True</only-from-outside>
-      </enter-action>
-    </actions>
-  </geoelement>
-  <geoelement id="MuseoArqueologia2">
-    <description>
-      <name>
-      </name>
-      <brief>
-      </brief>
-      <detailed>
-      </detailed>
-    </description>
-    <geometries>
-      <geometry influence="10">
-        <Point>
-          <pos>40,4486629774225 -3,7343610429139</pos>
-        </Point>
-      </geometry>
-    </geometries>
-    <actions>
-      <enter-action>
-        <effect>
-          <trigger-scene idTarget="EntradaHistoria2" x="1024" y="1152" transitionTime="0" transitionType="0" />
+          <trigger-scene idTarget="EntradaHistoria1" x="1024" y="1152" transitionTime="0" transitionType="0" />
           <condition />
         </effect>
         <only-from-outside>True</only-from-outside>
@@ -878,18 +862,13 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
     <actions>
       <enter-action>
         <effect>
-          <trigger-scene idTarget="FDI" x="677" y="744" transitionTime="0" transitionType="0" />
+          <activate flag="FDIEncontrada" />
+          <condition />
+          <trigger-scene idTarget="FDI" x="1024" y="1152" transitionTime="0" transitionType="0" />
           <condition />
         </effect>
         <only-from-outside>True</only-from-outside>
       </enter-action>
-      <exit-action>
-        <effect>
-          <trigger-scene idTarget="Ciu" x="334" y="288" transitionTime="0" transitionType="0" />
-          <condition />
-        </effect>
-        <only-from-inside>True</only-from-inside>
-      </exit-action>
     </actions>
   </geoelement>
   <graph-conversation id="Intro">
@@ -1271,6 +1250,581 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       <condition>
         <equals var="NumHuesos" value="6" />
       </condition>
+      <speak-player>
+        <resources name="No name" />
+        <text>Siete huesos</text>
+      </speak-player>
+      <condition>
+        <equals var="NumBitCoin" value="7" />
+      </condition>
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="ConverPistaArbol">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-player>
+        <resources name="No name" />
+        <text>¿Estás seguro de querer gastar un hueso para ver la pista?</text>
+      </speak-player>
+      <condition />
+      <child nodeindex="1" />
+    </dialogue-node>
+    <option-node nodeindex="1" keepShowing="yes" preListening="yes" editor-x="218" editor-y="251" x="218" y="251">
+      <speak-player>
+        <text>Sí</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="2" />
+      <speak-player>
+        <text>No</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="3" />
+    </option-node>
+    <dialogue-node nodeindex="2" editor-x="543" editor-y="268">
+      <speak-player>
+        <resources name="No name" />
+        <text>Busca el árbol de la fotografía cerca de la entrada de la facultad de Farmacia.</text>
+      </speak-player>
+      <condition />
+      <end-conversation>
+        <effect>
+          <activate flag="PistaArbol" />
+          <condition />
+          <decrement var="NumHuesos" value="1" />
+          <condition />
+        </effect>
+      </end-conversation>
+    </dialogue-node>
+    <dialogue-node nodeindex="3" editor-x="552" editor-y="464">
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="ConverPistaCorreos">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-player>
+        <resources name="No name" />
+        <text>¿Estás seguro de querer gastar un hueso para ver la pista?</text>
+      </speak-player>
+      <condition />
+      <child nodeindex="1" />
+    </dialogue-node>
+    <option-node nodeindex="1" keepShowing="yes" preListening="yes" editor-x="129" editor-y="247" x="129" y="247">
+      <speak-player>
+        <text>Sí</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="2" />
+      <speak-player>
+        <text>No</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="3" />
+    </option-node>
+    <dialogue-node nodeindex="2" editor-x="384" editor-y="120">
+      <speak-player>
+        <resources name="No name" />
+        <text>Este poste de correos está en la calle principal de la Complutense (C/Avenida Complutense). Siguiendo el camino que baja desde el árbol y luego a mano derecha.</text>
+      </speak-player>
+      <condition />
+      <end-conversation>
+        <effect>
+          <activate flag="PistaCorreos" />
+          <condition />
+          <decrement var="NumHuesos" value="1" />
+          <condition />
+        </effect>
+      </end-conversation>
+    </dialogue-node>
+    <dialogue-node nodeindex="3" editor-x="516" editor-y="446">
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="ConverPistaCruce">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-player>
+        <resources name="No name" />
+        <text>¿Estás seguro de querer gastar un hueso para ver la pista?</text>
+      </speak-player>
+      <condition />
+      <child nodeindex="1" />
+    </dialogue-node>
+    <option-node nodeindex="1" keepShowing="yes" preListening="yes" editor-x="214" editor-y="257" x="214" y="257">
+      <speak-player>
+        <text>Sí</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="2" />
+      <speak-player>
+        <text>No</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="3" />
+    </option-node>
+    <dialogue-node nodeindex="2" editor-x="628" editor-y="245">
+      <speak-player>
+        <resources name="No name" />
+        <text>Continúa por la avenida y cruza en el primer semáforo que te encuentras tras el buzón. Luego, hacia la derecha, continúa la calle.</text>
+      </speak-player>
+      <condition />
+      <end-conversation>
+        <effect>
+          <activate flag="PistaCruce" />
+          <condition />
+          <decrement var="NumHuesos" value="1" />
+          <condition />
+        </effect>
+      </end-conversation>
+    </dialogue-node>
+    <dialogue-node nodeindex="3" editor-x="434" editor-y="448">
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="ConverPistaCarteles">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-player>
+        <resources name="No name" />
+        <text>¿Estás seguro de querer gastar un hueso para ver la pista?</text>
+      </speak-player>
+      <condition />
+      <child nodeindex="1" />
+    </dialogue-node>
+    <option-node nodeindex="1" keepShowing="yes" preListening="yes" editor-x="285" editor-y="50" x="285" y="50">
+      <speak-player>
+        <text>Si</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="2" />
+      <speak-player>
+        <text>No</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="3" />
+    </option-node>
+    <dialogue-node nodeindex="2" editor-x="620" editor-y="52">
+      <speak-player>
+        <resources name="No name" />
+        <text>Cruza el semáforo que se ve en la foto anterior. A continuación, gira a la izquierda.</text>
+      </speak-player>
+      <condition />
+      <end-conversation>
+        <effect>
+          <activate flag="PistaCarteles" />
+          <condition />
+          <decrement var="NumHuesos" value="1" />
+          <condition />
+        </effect>
+      </end-conversation>
+    </dialogue-node>
+    <dialogue-node nodeindex="3" editor-x="623" editor-y="319">
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="ConverPistaEscaleras">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-player>
+        <resources name="No name" />
+        <text>¿Estás seguro de querer gastar un hueso para ver la pista?</text>
+      </speak-player>
+      <condition />
+      <child nodeindex="1" />
+    </dialogue-node>
+    <option-node nodeindex="1" keepShowing="yes" preListening="yes" editor-x="285" editor-y="50" x="285" y="50">
+      <speak-player>
+        <text>Sí</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="2" />
+      <speak-player>
+        <text>No</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="3" />
+    </option-node>
+    <dialogue-node nodeindex="2" editor-x="542" editor-y="24">
+      <speak-player>
+        <resources name="No name" />
+        <text>En la misma calle que las señales, dando a la derecha.</text>
+      </speak-player>
+      <condition />
+      <end-conversation>
+        <effect>
+          <activate flag="PistaEscaleras" />
+          <condition />
+          <decrement var="NumHuesos" value="1" />
+          <condition />
+        </effect>
+      </end-conversation>
+    </dialogue-node>
+    <dialogue-node nodeindex="3" editor-x="505" editor-y="241">
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="ConverPistaFachada1">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-player>
+        <resources name="No name" />
+        <text>¿Estás seguro de querer gastar un hueso para ver la pista?</text>
+      </speak-player>
+      <condition />
+      <child nodeindex="1" />
+    </dialogue-node>
+    <option-node nodeindex="1" keepShowing="yes" preListening="yes" editor-x="285" editor-y="50" x="285" y="50">
+      <speak-player>
+        <text>Sí</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="2" />
+      <speak-player>
+        <text>No</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="3" />
+    </option-node>
+    <dialogue-node nodeindex="2" editor-x="505" editor-y="50">
+      <speak-player>
+        <resources name="No name" />
+        <text>Entrada principal de la facultad de Geografía e Historia. Bajando por el camino desde las escaleras encontrarás la entrada a mano izquierda. </text>
+      </speak-player>
+      <condition />
+      <end-conversation>
+        <effect>
+          <activate flag="PistaFachada1" />
+          <condition />
+          <decrement var="NumHuesos" value="1" />
+          <condition />
+        </effect>
+      </end-conversation>
+    </dialogue-node>
+    <dialogue-node nodeindex="3" editor-x="505" editor-y="241">
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="IntroHistoria">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Por fin has conseguido llegar</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Ya empezaba a pensar que te habías extinguido...</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Como yo ¡ROOOOAAAR!</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Bien, para empezar, escanea el código QR que hay por los alrededores para comenzar la siguiente prueba.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Es similar a lo que comentó el profesor antes.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Recuerda que hay personas cerca que pueden ayudarte en lo que necesites.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Yo no entro por esta puerta tan minúscula, así que entraré por la de dinosaurios.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>¡Buena Suerte!</text>
+      </speak-char>
+      <condition />
+      <end-conversation>
+        <effect>
+          <activate flag="HistoriaEscenaFinal" />
+          <condition />
+          <activate flag="IntroHistoria" />
+          <condition />
+          <trigger-scene idTarget="EscenaDinoRAM" x="142" y="132" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+      </end-conversation>
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="ConverDinoRAM">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Vaya vaya.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>No está nada mal para alguien tan pequeñajo.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Bueno, me alegra haber compartido estos momentos contigo.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>Pero llegó el momento de despedirse.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>A partir de aquí, te a acompañará nuestro peculiar amigo RAM</text>
+      </speak-char>
+      <condition />
+      <child nodeindex="1" />
+      <effect>
+        <activate flag="RAMAparece" />
+        <condition />
+      </effect>
+    </dialogue-node>
+    <dialogue-node nodeindex="1" editor-x="617" editor-y="56">
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>01100001 01100010 01110010 01101001 01110010 00100000 01101101 01100101 01101110 01110011 01100001 01101010 01100101</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>Es broma, puedo hablar en tu idioma JA JA JA</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>Felicidades por llegar hasta aquí sujeto no binario</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>Continuaremos con la misma dinámica marcada anteriormente por Dino</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>Tendrás que encontrar las sucesivas pistas para llegar hasta la última facultad</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>¿Tienes idea de cuál podrá ser?</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>Aquí tienes una pista y un bitcoin, úsalo con sabiduría.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>Recuerda que ganará el que porte mayor cantidad de objetos al final del juego.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>01100011 01100101 01110010 01110010 01100001 01110010 00100000 01101101 01100101 01101110 01110011 01100001 01101010 01100101</text>
+      </speak-char>
+      <condition />
+      <end-conversation>
+        <effect>
+          <activate flag="QRTunelActivo" />
+          <condition />
+          <generate-object idTarget="TunelHistoria" />
+          <condition />
+          <generate-object idTarget="BitCoin" />
+          <condition />
+          <increment var="NumBitCoin" value="1" />
+          <condition />
+        </effect>
+      </end-conversation>
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="CuentaBitCoins">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-player>
+        <resources name="No name" />
+        <text>Tienes...</text>
+      </speak-player>
+      <condition />
+      <speak-player>
+        <resources name="No name" />
+        <text>Cero bitcoins.</text>
+      </speak-player>
+      <condition>
+        <equals var="NumBitCoin" value="0" />
+      </condition>
+      <speak-player>
+        <resources name="No name" />
+        <text>Un bitcoin.</text>
+      </speak-player>
+      <condition>
+        <equals var="NumBitCoin" value="1" />
+      </condition>
+      <speak-player>
+        <resources name="No name" />
+        <text>Dos bitcoins.</text>
+      </speak-player>
+      <condition>
+        <equals var="NumBitCoin" value="2" />
+      </condition>
+      <speak-player>
+        <resources name="No name" />
+        <text>Tres bitcoins.</text>
+      </speak-player>
+      <condition>
+        <equals var="NumBitCoin" value="3" />
+      </condition>
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="ConverPistaTunel">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-player>
+        <resources name="No name" />
+        <text>¿Estás seguro de querer gastar un hueso para ver la pista?</text>
+      </speak-player>
+      <condition />
+      <child nodeindex="1" />
+    </dialogue-node>
+    <option-node nodeindex="1" keepShowing="yes" preListening="yes" editor-x="561" editor-y="50" x="561" y="50">
+      <speak-player>
+        <text>Sí</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="2" />
+      <speak-player>
+        <text>No</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="3" />
+    </option-node>
+    <dialogue-node nodeindex="2" editor-x="781" editor-y="50">
+      <speak-player>
+        <resources name="No name" />
+        <text>Entrada principal de la facultad de Geografía e Historia. Bajando por el camino desde las escaleras encontrarás la entrada a mano izquierda. </text>
+      </speak-player>
+      <condition />
+      <end-conversation>
+        <effect>
+          <activate flag="PistaTunel" />
+          <condition />
+          <decrement var="NumBitCoin" value="1" />
+          <condition />
+        </effect>
+      </end-conversation>
+    </dialogue-node>
+    <dialogue-node nodeindex="3" editor-x="781" editor-y="241">
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="ConverPistaEntradaB">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-player>
+        <resources name="No name" />
+        <text>¿Estás seguro de querer gastar un hueso para ver la pista?</text>
+      </speak-player>
+      <condition />
+      <child nodeindex="1" />
+    </dialogue-node>
+    <option-node nodeindex="1" keepShowing="yes" preListening="yes" editor-x="285" editor-y="50" x="285" y="50">
+      <speak-player>
+        <text>Sí</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="2" />
+      <speak-player>
+        <text>No</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="3" />
+    </option-node>
+    <dialogue-node nodeindex="2" editor-x="623" editor-y="50">
+      <speak-player>
+        <resources name="No name" />
+        <text>Una vez atraviesas el túnel, cruzas el parking y llegas a la entrada del camino que atraviesa el bosque.</text>
+      </speak-player>
+      <condition />
+      <end-conversation>
+        <effect>
+          <activate flag="PistaEntradaBosque" />
+          <condition />
+          <decrement var="NumBitCoin" value="1" />
+          <condition />
+        </effect>
+      </end-conversation>
+    </dialogue-node>
+    <dialogue-node nodeindex="3" editor-x="505" editor-y="241">
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="ConverPistaSalidaB">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-player>
+        <resources name="No name" />
+        <text>¿Estás seguro de querer gastar un hueso para ver la pista?</text>
+      </speak-player>
+      <condition />
+      <child nodeindex="1" />
+    </dialogue-node>
+    <option-node nodeindex="1" keepShowing="yes" preListening="yes" editor-x="285" editor-y="50" x="285" y="50">
+      <speak-player>
+        <text>Sí</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="2" />
+      <speak-player>
+        <text>No</text>
+        <resources name="No name" />
+      </speak-player>
+      <condition />
+      <child nodeindex="3" />
+    </option-node>
+    <dialogue-node nodeindex="2" editor-x="505" editor-y="50">
+      <speak-player>
+        <resources name="No name" />
+        <text>Tienes que atravesar todo el camino del bosque, cruzar e ir a la derecha.</text>
+      </speak-player>
+      <condition />
+      <end-conversation>
+        <effect>
+          <activate flag="PistaSalidaBosque" />
+          <condition />
+          <decrement var="NumBitCoin" value="1" />
+          <condition />
+        </effect>
+      </end-conversation>
+    </dialogue-node>
+    <dialogue-node nodeindex="3" editor-x="505" editor-y="241">
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="IntroFDI">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
       <end-conversation />
     </dialogue-node>
   </graph-conversation>
@@ -1291,7 +1845,25 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       <use needsGoTo="yes" keepDistance="35" not-effects="no">
         <documentation>Permite que veamos el objeto</documentation>
         <effect>
-          <trigger-scene idTarget="EscenaArbolFarmacia" x="400" y="450" transitionTime="0" transitionType="0" />
+          <activate flag="EscenaPistaArbol" />
+          <condition />
+          <deactivate flag="EscenaFachada1" />
+          <condition />
+          <deactivate flag="EscenaPistaCarteles" />
+          <condition />
+          <deactivate flag="EscenaPistaCorreos" />
+          <condition />
+          <deactivate flag="EscenaPistaCruce" />
+          <condition />
+          <deactivate flag="EscenaPistaEntradaB" />
+          <condition />
+          <deactivate flag="EscenaPistaEscaleras" />
+          <condition />
+          <deactivate flag="EscenaPistaTunel" />
+          <condition />
+          <deactivate flag="EscenaSalidaBosque" />
+          <condition />
+          <trigger-scene idTarget="EscenaArbolFarmacia" x="768" y="1536" transitionTime="0" transitionType="0" />
           <condition />
         </effect>
       </use>
@@ -1331,6 +1903,24 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
           <active flag="PistaCorreosActiva" />
         </condition>
         <effect>
+          <activate flag="EscenaPistaCorreos" />
+          <condition />
+          <deactivate flag="EscenaFachada1" />
+          <condition />
+          <deactivate flag="EscenaPistaArbol" />
+          <condition />
+          <deactivate flag="EscenaPistaCarteles" />
+          <condition />
+          <deactivate flag="EscenaPistaCruce" />
+          <condition />
+          <deactivate flag="EscenaPistaEntradaB" />
+          <condition />
+          <deactivate flag="EscenaPistaEscaleras" />
+          <condition />
+          <deactivate flag="EscenaPistaTunel" />
+          <condition />
+          <deactivate flag="EscenaSalidaBosque" />
+          <condition />
           <trigger-scene idTarget="EscenaPosteCorreos" x="768" y="1536" transitionTime="0" transitionType="0" />
           <condition />
         </effect>
@@ -1371,6 +1961,24 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
           <active flag="PistaCruceActiva" />
         </condition>
         <effect>
+          <activate flag="EscenaPistaCruce" />
+          <condition />
+          <deactivate flag="EscenaFachada1" />
+          <condition />
+          <deactivate flag="EscenaPistaArbol" />
+          <condition />
+          <deactivate flag="EscenaPistaCarteles" />
+          <condition />
+          <deactivate flag="EscenaPistaCorreos" />
+          <condition />
+          <deactivate flag="EscenaPistaEntradaB" />
+          <condition />
+          <deactivate flag="EscenaPistaEscaleras" />
+          <condition />
+          <deactivate flag="EscenaPistaTunel" />
+          <condition />
+          <deactivate flag="EscenaSalidaBosque" />
+          <condition />
           <trigger-scene idTarget="EscenaCruceCarretera" x="1024" y="1152" transitionTime="0" transitionType="0" />
           <condition />
         </effect>
@@ -1411,6 +2019,24 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
           <active flag="PistaSenyalActiva" />
         </condition>
         <effect>
+          <activate flag="EscenaPistaCarteles" />
+          <condition />
+          <deactivate flag="EscenaPistaArbol" />
+          <condition />
+          <deactivate flag="EscenaPistaCorreos" />
+          <condition />
+          <deactivate flag="EscenaPistaCruce" />
+          <condition />
+          <deactivate flag="EscenaPistaEntradaB" />
+          <condition />
+          <deactivate flag="EscenaPistaEscaleras" />
+          <condition />
+          <deactivate flag="EscenaPistaTunel" />
+          <condition />
+          <deactivate flag="EscenaSalidaBosque" />
+          <condition />
+          <deactivate flag="EscenaFachada1" />
+          <condition />
           <trigger-scene idTarget="EscenaCarteles" x="768" y="1536" transitionTime="0" transitionType="0" />
           <condition />
         </effect>
@@ -1451,6 +2077,24 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
           <active flag="PistaEscalerasActiva" />
         </condition>
         <effect>
+          <activate flag="EscenaPistaEscaleras" />
+          <condition />
+          <deactivate flag="EscenaFachada1" />
+          <condition />
+          <deactivate flag="EscenaPistaArbol" />
+          <condition />
+          <deactivate flag="EscenaPistaCarteles" />
+          <condition />
+          <deactivate flag="EscenaPistaCorreos" />
+          <condition />
+          <deactivate flag="EscenaPistaCruce" />
+          <condition />
+          <deactivate flag="EscenaPistaEntradaB" />
+          <condition />
+          <deactivate flag="EscenaPistaTunel" />
+          <condition />
+          <deactivate flag="EscenaSalidaBosque" />
+          <condition />
           <trigger-scene idTarget="EscenaEscaleras" x="1024" y="1152" transitionTime="0" transitionType="0" />
           <condition />
         </effect>
@@ -1482,9 +2126,7 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
           <condition />
           <activate flag="PistaFachadaActiva" />
           <condition />
-          <generate-object idTarget="FachadaHistoria2" />
-          <condition />
-          <increment var="NumHuesos" value="1" />
+          <increment var="NumHuesos" value="2" />
           <condition />
         </effect>
       </grab>
@@ -1493,32 +2135,25 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
           <active flag="PistaFachadaActiva" />
         </condition>
         <effect>
-          <trigger-scene idTarget="EscenaFachadaHistoria1" x="1024" y="1152" transitionTime="0" transitionType="0" />
+          <activate flag="EscenaFachada1" />
           <condition />
-        </effect>
-      </use>
-    </actions>
-  </object>
-  <object id="FachadaHistoria2" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
-    <resources name="No name">
-      <asset type="image" uri="assets/image/IMG_20201204_123841.jpg" />
-      <asset type="icon" uri="assets/special/EmptyIcon.png" />
-    </resources>
-    <description>
-      <name>
-      </name>
-      <brief>
-      </brief>
-      <detailed>
-      </detailed>
-    </description>
-    <actions>
-      <use needsGoTo="yes" keepDistance="35" not-effects="no">
-        <condition>
-          <active flag="PistaFachadaActiva" />
-        </condition>
-        <effect>
-          <trigger-scene idTarget="EscenaFachadaHistoria2" x="1024" y="1152" transitionTime="0" transitionType="0" />
+          <deactivate flag="EscenaPistaArbol" />
+          <condition />
+          <deactivate flag="EscenaPistaCarteles" />
+          <condition />
+          <deactivate flag="EscenaPistaCorreos" />
+          <condition />
+          <deactivate flag="EscenaPistaCruce" />
+          <condition />
+          <deactivate flag="EscenaPistaEntradaB" />
+          <condition />
+          <deactivate flag="EscenaPistaEscaleras" />
+          <condition />
+          <deactivate flag="EscenaPistaTunel" />
+          <condition />
+          <deactivate flag="EscenaSalidaBosque" />
+          <condition />
+          <trigger-scene idTarget="EscenaFachadaHistoria1" x="1024" y="1152" transitionTime="0" transitionType="0" />
           <condition />
         </effect>
       </use>
@@ -1537,6 +2172,32 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       <detailed>
       </detailed>
     </description>
+    <actions>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <effect>
+          <activate flag="EscenaPistaTunel" />
+          <condition />
+          <deactivate flag="EscenaFachada1" />
+          <condition />
+          <deactivate flag="EscenaPistaArbol" />
+          <condition />
+          <deactivate flag="EscenaPistaCarteles" />
+          <condition />
+          <deactivate flag="EscenaPistaCorreos" />
+          <condition />
+          <deactivate flag="EscenaPistaCruce" />
+          <condition />
+          <deactivate flag="EscenaPistaEntradaB" />
+          <condition />
+          <deactivate flag="EscenaPistaEscaleras" />
+          <condition />
+          <deactivate flag="EscenaSalidaBosque" />
+          <condition />
+          <trigger-scene idTarget="EscenaTunelHistoria" x="768" y="1536" transitionTime="0" transitionType="0" />
+          <condition />
+        </effect>
+      </use>
+    </actions>
   </object>
   <object id="EntradaBosque" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
     <resources name="No name">
@@ -1570,6 +2231,24 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
           <active flag="PistaEntradaBosqueActiva" />
         </condition>
         <effect>
+          <activate flag="EscenaPistaEntradaB" />
+          <condition />
+          <deactivate flag="EscenaFachada1" />
+          <condition />
+          <deactivate flag="EscenaPistaArbol" />
+          <condition />
+          <deactivate flag="EscenaPistaCarteles" />
+          <condition />
+          <deactivate flag="EscenaPistaCorreos" />
+          <condition />
+          <deactivate flag="EscenaPistaCruce" />
+          <condition />
+          <deactivate flag="EscenaPistaEscaleras" />
+          <condition />
+          <deactivate flag="EscenaPistaTunel" />
+          <condition />
+          <deactivate flag="EscenaSalidaBosque" />
+          <condition />
           <trigger-scene idTarget="EscenaEntradaBosque" x="768" y="1536" transitionTime="0" transitionType="0" />
           <condition />
         </effect>
@@ -1608,6 +2287,24 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
           <active flag="PistaSalidaBosqueActiva" />
         </condition>
         <effect>
+          <activate flag="EscenaSalidaBosque" />
+          <condition />
+          <deactivate flag="EscenaFachada1" />
+          <condition />
+          <deactivate flag="EscenaPistaArbol" />
+          <condition />
+          <deactivate flag="EscenaPistaCarteles" />
+          <condition />
+          <deactivate flag="EscenaPistaCorreos" />
+          <condition />
+          <deactivate flag="EscenaPistaCruce" />
+          <condition />
+          <deactivate flag="EscenaPistaEntradaB" />
+          <condition />
+          <deactivate flag="EscenaPistaEscaleras" />
+          <condition />
+          <deactivate flag="EscenaPistaTunel" />
+          <condition />
           <trigger-scene idTarget="EscenaSalidaBosque" x="1024" y="1152" transitionTime="0" transitionType="0" />
           <condition />
         </effect>
@@ -1632,6 +2329,24 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
         <effect>
           <trigger-scene idTarget="Ciu" x="677" y="744" transitionTime="0" transitionType="0" />
           <condition />
+          <deactivate flag="EscenaPistaArbol" />
+          <condition />
+          <deactivate flag="EscenaPistaCorreos" />
+          <condition />
+          <deactivate flag="EscenaPistaCruce" />
+          <condition />
+          <deactivate flag="EscenaPistaCarteles" />
+          <condition />
+          <deactivate flag="EscenaPistaEscaleras" />
+          <condition />
+          <deactivate flag="EscenaFachada1" />
+          <condition />
+          <deactivate flag="EscenaPistaTunel" />
+          <condition />
+          <deactivate flag="EscenaPistaEntradaB" />
+          <condition />
+          <deactivate flag="EscenaSalidaBosque" />
+          <condition />
         </effect>
       </use>
     </actions>
@@ -1649,6 +2364,107 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       <detailed>
       </detailed>
     </description>
+    <actions>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Arbol</documentation>
+        <condition>
+          <active flag="EscenaPistaArbol" />
+          <inactive flag="PistaArbol" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="ConverPistaArbol" />
+          <condition />
+        </effect>
+      </use>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Correos</documentation>
+        <condition>
+          <active flag="EscenaPistaCorreos" />
+          <inactive flag="PistaCorreos" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="ConverPistaCorreos" />
+          <condition />
+        </effect>
+      </use>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Cruce</documentation>
+        <condition>
+          <active flag="EscenaPistaCruce" />
+          <inactive flag="PistaCruce" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="ConverPistaCruce" />
+          <condition />
+        </effect>
+      </use>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Carteles</documentation>
+        <condition>
+          <active flag="EscenaPistaCarteles" />
+          <inactive flag="PistaCarteles" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="ConverPistaCarteles" />
+          <condition />
+        </effect>
+      </use>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Escaleras</documentation>
+        <condition>
+          <active flag="EscenaPistaEscaleras" />
+          <inactive flag="PistaEscaleras" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="ConverPistaEscaleras" />
+          <condition />
+        </effect>
+      </use>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Fa1</documentation>
+        <condition>
+          <active flag="EscenaFachada1" />
+          <inactive flag="PistaFachada1" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="ConverPistaFachada1" />
+          <condition />
+        </effect>
+      </use>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Tunel</documentation>
+        <condition>
+          <active flag="EscenaPistaTunel" />
+          <inactive flag="PistaTunel" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="ConverPistaTunel" />
+          <condition />
+        </effect>
+      </use>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>EBosque</documentation>
+        <condition>
+          <active flag="EscenaPistaEntradaB" />
+          <inactive flag="PistaEntradaBosque" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="ConverPistaEntradaB" />
+          <condition />
+        </effect>
+      </use>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>SBosque</documentation>
+        <condition>
+          <active flag="EscenaSalidaBosque" />
+          <inactive flag="PistaSalidaBosque" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="ConverPistaSalidaB" />
+          <condition />
+        </effect>
+      </use>
+    </actions>
   </object>
   <object id="Hueso" returnsWhenDragged="yes" behaviour="normal" resources-transition-time="0">
     <resources name="No name">
@@ -1672,6 +2488,23 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
       </use>
     </actions>
   </object>
+  <object id="BitCoin" returnsWhenDragged="yes" behaviour="normal" resources-transition-time="0">
+    <resources name="No name">
+      <asset type="image" uri="assets/image/BitCoin.png" />
+      <asset type="icon" uri="assets/special/EmptyIcon.png" />
+    </resources>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <actions>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no" />
+    </actions>
+  </object>
   <qr-code id="ItemArbolFarmacia">
     <content>
     </content>
@@ -1681,8 +2514,25 @@ Puedes entrar al edificio por cualquiera de las dos puertas.</speak-player>
     <effect>
       <trigger-scene idTarget="EscenaProfesorDino" x="142" y="132" transitionTime="0" transitionType="0" />
       <condition />
-      <trigger-conversation idTarget="ConverProfesorDino" />
+    </effect>
+  </qr-code>
+  <qr-code id="ItemTunelHistoria">
+    <content>
+    </content>
+    <documentation>
+    </documentation>
+    <condition />
+    <effect>
+      <trigger-scene idTarget="EscenaDinoRAM" x="142" y="132" transitionTime="0" transitionType="0" />
       <condition />
     </effect>
+  </qr-code>
+  <qr-code id="FinJuego">
+    <content>
+    </content>
+    <documentation>
+    </documentation>
+    <condition />
+    <effect />
   </qr-code>
 </eAdventure>
