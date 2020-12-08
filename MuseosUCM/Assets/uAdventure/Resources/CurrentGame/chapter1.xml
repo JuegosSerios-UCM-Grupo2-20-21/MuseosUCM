@@ -86,7 +86,7 @@
       </talk-to>
     </actions>
   </character>
-  <character id="Dino" behaviour="normal">
+  <character id="Dino" behaviour="first-action">
     <resources name="No name">
       <asset type="standup" uri="assets/special/EmptyAnimation" />
       <asset type="standdown" uri="assets/animation/DinoAnim.eaa.xml" />
@@ -139,7 +139,7 @@
       </talk-to>
     </actions>
   </character>
-  <character id="RAM" behaviour="normal">
+  <character id="RAM" behaviour="first-action">
     <resources name="No name">
       <asset type="standup" uri="assets/special/EmptyAnimation" />
       <asset type="standdown" uri="assets/animation/RamAnim.eaa.xml" />
@@ -268,7 +268,7 @@
       <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
     </objects>
     <active-areas>
-      <active-area id="AbrirPistaCorreos" rectangular="yes" x="15" y="23" width="160" height="212" hasInfluenceArea="no" behaviour="normal">
+      <active-area id="AbrirPistaCorreos" rectangular="yes" x="15" y="23" width="160" height="212" hasInfluenceArea="no" behaviour="first-action">
         <condition>
           <active flag="PistaCorreos" />
         </condition>
@@ -306,7 +306,7 @@ Siguiendo el camino que baja desde el árbol y luego a mano derecha.</speak-play
       <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
     </objects>
     <active-areas>
-      <active-area id="AbrirPistaCruce" rectangular="yes" x="21" y="20" width="151" height="201" hasInfluenceArea="no" behaviour="normal">
+      <active-area id="AbrirPistaCruce" rectangular="yes" x="21" y="20" width="151" height="201" hasInfluenceArea="no" behaviour="first-action">
         <condition>
           <active flag="PistaCruce" />
         </condition>
@@ -344,7 +344,7 @@ Siguiendo el camino que baja desde el árbol y luego a mano derecha.</speak-play
       <object-ref idTarget="BotonVolver" x="312" y="2054" scale="1.432168" layer="1" hasInfluenceArea="no" />
     </objects>
     <active-areas>
-      <active-area id="AbrirPistaCarteles" rectangular="yes" x="20" y="22" width="148" height="206" hasInfluenceArea="no" behaviour="normal">
+      <active-area id="AbrirPistaCarteles" rectangular="yes" x="20" y="22" width="148" height="206" hasInfluenceArea="no" behaviour="first-action">
         <condition>
           <active flag="PistaCarteles" />
         </condition>
@@ -382,7 +382,7 @@ A continuación, gira a la izquierda.</speak-player>
       <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
     </objects>
     <active-areas>
-      <active-area id="AbrirPistaEscaleras" rectangular="yes" x="25" y="28" width="145" height="196" hasInfluenceArea="no" behaviour="normal">
+      <active-area id="AbrirPistaEscaleras" rectangular="yes" x="25" y="28" width="145" height="196" hasInfluenceArea="no" behaviour="first-action">
         <condition>
           <active flag="PistaEscaleras" />
         </condition>
@@ -419,7 +419,7 @@ A continuación, gira a la izquierda.</speak-player>
       <object-ref idTarget="BotonVolver" x="240" y="1534" scale="1.074126" layer="1" hasInfluenceArea="no" />
     </objects>
     <active-areas>
-      <active-area id="AbrirPistaFachadaHistoria1" rectangular="yes" x="23" y="21" width="154" height="196" hasInfluenceArea="no" behaviour="normal">
+      <active-area id="AbrirPistaFachadaHistoria1" rectangular="yes" x="23" y="21" width="154" height="196" hasInfluenceArea="no" behaviour="first-action">
         <condition>
           <active flag="PistaFachada1" />
         </condition>
@@ -457,7 +457,7 @@ A continuación, gira a la izquierda.</speak-player>
       <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
     </objects>
     <active-areas>
-      <active-area id="AbrirPistaTunel" rectangular="yes" x="23" y="17" width="160" height="204" hasInfluenceArea="no" behaviour="normal">
+      <active-area id="AbrirPistaTunel" rectangular="yes" x="23" y="17" width="160" height="204" hasInfluenceArea="no" behaviour="first-action">
         <condition>
           <active flag="PistaTunel" />
         </condition>
@@ -494,7 +494,7 @@ A continuación, gira a la izquierda.</speak-player>
       <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
     </objects>
     <active-areas>
-      <active-area id="AbrirPistaEntradaBosque" rectangular="yes" x="18" y="19" width="164" height="214" hasInfluenceArea="no" behaviour="normal">
+      <active-area id="AbrirPistaEntradaBosque" rectangular="yes" x="18" y="19" width="164" height="214" hasInfluenceArea="no" behaviour="first-action">
         <condition>
           <active flag="PistaEntradaBosque" />
         </condition>
@@ -531,7 +531,7 @@ A continuación, gira a la izquierda.</speak-player>
       <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
     </objects>
     <active-areas>
-      <active-area id="AbrirPistaSalidaBosque" rectangular="yes" x="18" y="19" width="157" height="214" hasInfluenceArea="no" behaviour="normal">
+      <active-area id="AbrirPistaSalidaBosque" rectangular="yes" x="18" y="19" width="157" height="214" hasInfluenceArea="no" behaviour="first-action">
         <condition>
           <active flag="PistaSalidaBosque" />
         </condition>
@@ -2466,7 +2466,7 @@ A continuación, gira a la izquierda.</speak-player>
       </use>
     </actions>
   </object>
-  <object id="Hueso" returnsWhenDragged="yes" behaviour="normal" resources-transition-time="0">
+  <object id="Hueso" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
     <resources name="No name">
       <asset type="image" uri="assets/image/hueso.png" />
       <asset type="icon" uri="assets/special/EmptyIcon.png" />
@@ -2488,7 +2488,7 @@ A continuación, gira a la izquierda.</speak-player>
       </use>
     </actions>
   </object>
-  <object id="BitCoin" returnsWhenDragged="yes" behaviour="normal" resources-transition-time="0">
+  <object id="BitCoin" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
     <resources name="No name">
       <asset type="image" uri="assets/image/BitCoin.png" />
       <asset type="icon" uri="assets/special/EmptyIcon.png" />
