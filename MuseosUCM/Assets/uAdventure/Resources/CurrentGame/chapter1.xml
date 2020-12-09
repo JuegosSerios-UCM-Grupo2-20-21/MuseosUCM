@@ -1045,7 +1045,7 @@ A continuación, gira a la izquierda.</speak-player>
     </dialogue-node>
   </graph-conversation>
   <graph-conversation id="IntroFarmacia">
-    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+    <dialogue-node nodeindex="0" editor-x="45" editor-y="48">
       <speak-char idTarget="Professor">
         <resources name="No name" />
         <text>BIenvenido a Farmacia</text>
@@ -1063,7 +1063,41 @@ A continuación, gira a la izquierda.</speak-player>
       <condition />
       <speak-char idTarget="Professor">
         <resources name="No name" />
-        <text>Si no lo encuentras, pregunta al personal del centro, están aquí para ayudarte en lo que necesites.</text>
+        <text>¿Que cómo? Pues con esta cámara.</text>
+      </speak-char>
+      <condition />
+      <child nodeindex="1" />
+      <effect>
+        <activate flag="IntroFarmacia" />
+        <condition />
+        <generate-object idTarget="Escaner" />
+        <condition />
+      </effect>
+    </dialogue-node>
+    <dialogue-node nodeindex="1" editor-x="46" editor-y="317">
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Cuando quieras escanear un código, ábrela desde el inventario.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Después, solo tienes que apuntar con tu móvil al código.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>¡Así de fácil!</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Si no encuentras el código de la entrada, pregunta al personal del centro.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Están aquí para ayudarte en lo que necesites. </text>
       </speak-char>
       <condition />
       <speak-char idTarget="Professor">
@@ -1078,10 +1112,6 @@ A continuación, gira a la izquierda.</speak-player>
       <condition />
       <end-conversation>
         <effect>
-          <activate flag="IntroFarmacia" />
-          <condition />
-          <generate-object idTarget="Escaner" />
-          <condition />
           <activate flag="FarmaciaEscenaFinal" />
           <condition />
           <trigger-scene idTarget="EscenaProfesorDino" x="142" y="132" transitionTime="0" transitionType="0" />
