@@ -611,6 +611,16 @@ A continuación, gira a la izquierda.</speak-player>
       <character-ref idTarget="RAM" x="743" y="1331" scale="0.9488741" orientation="2" layer="0" hasInfluenceArea="no" />
     </characters>
   </scene>
+  <scene id="PistasFDI" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/fondoNegro.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+  </scene>
   <map-scene id="Ciu" cameraType="Aerial2D" renderStyle="Tile" tileMetaIdentifier="OSMTile" usesGameplayArea="no" gameplayArea="0 0 0 0" center="(40.4438559497666, -3.72701447242189)" zoom="18" start="yes">
     <map-element targetId="Professor" layer="0" scale="0.08" orientation="2">
       <condition>
@@ -1069,6 +1079,8 @@ A continuación, gira a la izquierda.</speak-player>
       <end-conversation>
         <effect>
           <activate flag="IntroFarmacia" />
+          <condition />
+          <generate-object idTarget="Escaner" />
           <condition />
           <activate flag="FarmaciaEscenaFinal" />
           <condition />
@@ -1834,7 +1846,7 @@ A continuación, gira a la izquierda.</speak-player>
     <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
       <speak-char idTarget="RAM">
         <resources name="No name" />
-        <text>01100001 01100010 01110010 01101001 01110010 00100000 01101101 01100101 01101110 01110011 01100001 01101010 01100101</text>
+        <text>01001000 01101111 01101100 01100001</text>
       </speak-char>
       <condition />
       <speak-char idTarget="RAM">
@@ -1844,7 +1856,7 @@ A continuación, gira a la izquierda.</speak-player>
       <condition />
       <speak-char idTarget="RAM">
         <resources name="No name" />
-        <text>Ya sabes, escanea el código QR de la entrada.</text>
+        <text>Escanea el código QR de la entrada.</text>
       </speak-char>
       <condition />
       <speak-char idTarget="RAM">
@@ -1854,7 +1866,7 @@ A continuación, gira a la izquierda.</speak-player>
       <condition />
       <speak-char idTarget="RAM">
         <resources name="No name" />
-        <text>Si no lo distingues de los demás, usa uno de los bitcoins que tienes.</text>
+        <text>Ya sabes que puedes volver a abrir la cámara desde tu inventario, y escanear el código cuando quieras.</text>
       </speak-char>
       <condition />
       <speak-char idTarget="RAM">
@@ -1864,10 +1876,18 @@ A continuación, gira a la izquierda.</speak-player>
       <condition />
       <speak-char idTarget="RAM">
         <resources name="No name" />
-        <text>01100011 01100101 01110010 01110010 01100001 01110010 00100000 01101101 01100101 01101110 01110011 01100001 01101010 01100101</text>
+        <text>01001000 01100001 01110011 01110100 01100001 00100000 01101100 01110101 01100101 01100111 01101111</text>
       </speak-char>
       <condition />
-      <end-conversation />
+      <end-conversation>
+        <effect>
+          <qr-scanner selection-type="BlackList">
+            <message>
+            </message>
+          </qr-scanner>
+          <condition />
+        </effect>
+      </end-conversation>
     </dialogue-node>
   </graph-conversation>
   <graph-conversation id="AdivinanzaResueltaFDI">
@@ -2581,6 +2601,31 @@ A continuación, gira a la izquierda.</speak-player>
       <use needsGoTo="yes" keepDistance="35" not-effects="no" />
     </actions>
   </object>
+  <object id="Escaner" returnsWhenDragged="yes" behaviour="normal" resources-transition-time="0">
+    <resources name="No name">
+      <asset type="image" uri="assets/image/Camara.png" />
+      <asset type="icon" uri="assets/special/EmptyIcon.png" />
+    </resources>
+    <description>
+      <name>
+      </name>
+      <brief>
+      </brief>
+      <detailed>
+      </detailed>
+    </description>
+    <actions>
+      <use needsGoTo="yes" keepDistance="35" not-effects="no">
+        <effect>
+          <qr-scanner selection-type="BlackList">
+            <message>
+            </message>
+          </qr-scanner>
+          <condition />
+        </effect>
+      </use>
+    </actions>
+  </object>
   <qr-code id="ItemArbolFarmacia">
     <content>
     </content>
@@ -2610,6 +2655,8 @@ A continuación, gira a la izquierda.</speak-player>
     </documentation>
     <condition />
     <effect>
+      <trigger-scene idTarget="PistasFDI" x="142" y="132" transitionTime="0" transitionType="0" />
+      <condition />
       <show-text x="300" y="300" frontColor="#74A3DDFF" borderColor="#524B4BFF" uri="">Tic toc, hace el reloj.
 TikTok hacen los jóvenes
 Y este, que es más viejo,
