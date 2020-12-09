@@ -13,8 +13,8 @@
 <entry key="Chapter0.EscenaPosteCorreos.Y">288</entry>
 <entry key="Chapter0.EscenaCruceCarretera.X">322</entry>
 <entry key="Chapter0.EscenaCruceCarretera.Y">355</entry>
-<entry key="Chapter0.EscenaCarteles.X">-158</entry>
-<entry key="Chapter0.EscenaCarteles.Y">-40</entry>
+<entry key="Chapter0.EscenaCarteles.X">-123</entry>
+<entry key="Chapter0.EscenaCarteles.Y">-31</entry>
 <entry key="Chapter0.EscenaEscaleras.X">-91</entry>
 <entry key="Chapter0.EscenaEscaleras.Y">351</entry>
 <entry key="Chapter0.EscenaFachadaHistoria1.X">749</entry>
@@ -37,7 +37,11 @@
 <entry key="Chapter0.EscenaDinoRAM.Y">470</entry>
 <entry key="Chapter0.PistasFDI.X">765</entry>
 <entry key="Chapter0.PistasFDI.Y">554</entry>
-<entry key="Chapter0.FDIFinal.X">765</entry>
-<entry key="Chapter0.FDIFinal.Y">596</entry>
+<entry key="Chapter0.FDIFinal.X">761</entry>
+<entry key="Chapter0.FDIFinal.Y">593</entry>
+<entry key="Chapter0.PistasFarmacia.X">798</entry>
+<entry key="Chapter0.PistasFarmacia.Y">595</entry>
+<entry key="Chapter0.Pistas.X">761</entry>
+<entry key="Chapter0.Pistas.Y">551</entry>
 </properties>
 

@@ -97,6 +97,17 @@
           <condition />
         </effect>
       </talk-to>
+      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Repite pista</documentation>
+        <condition>
+          <less-equals-than var="IdPista" value="3" />
+          <not-equals var="IdPista" value="0" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="EnunciadoPistas" />
+          <condition />
+        </effect>
+      </talk-to>
     </actions>
   </character>
   <character id="Dino" behaviour="first-action">
@@ -229,6 +240,17 @@
           <condition />
         </effect>
       </talk-to>
+      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Repite pista
+</documentation>
+        <condition>
+          <greater-than var="IdPista" value="6" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="EnunciadoPistas" />
+          <condition />
+        </effect>
+      </talk-to>
     </actions>
   </character>
   <scene id="Farmacia" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
@@ -280,7 +302,7 @@
     <default-initial-position x="400" y="450" />
     <objects>
       <object-ref idTarget="BotonVolver" x="309" y="2048" scale="1.432168" layer="1" hasInfluenceArea="no" />
-      <object-ref idTarget="BotonPista" x="108" y="230" scale="0.2287648" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="108" y="230" scale="0.12" layer="0" hasInfluenceArea="no" />
     </objects>
     <active-areas>
       <active-area id="AbrirPista" rectangular="yes" x="22" y="18" width="152" height="216" hasInfluenceArea="no" behaviour="first-action">
@@ -317,7 +339,7 @@
     <default-initial-position x="400" y="450" />
     <objects>
       <object-ref idTarget="BotonVolver" x="309" y="2048" scale="1.432168" layer="1" hasInfluenceArea="no" />
-      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.12" layer="0" hasInfluenceArea="no" />
     </objects>
     <active-areas>
       <active-area id="AbrirPistaCorreos" rectangular="yes" x="15" y="23" width="160" height="212" hasInfluenceArea="no" behaviour="first-action">
@@ -355,7 +377,7 @@ Siguiendo el camino que baja desde el árbol y luego a mano derecha.</speak-play
     <default-initial-position x="400" y="450" />
     <objects>
       <object-ref idTarget="BotonVolver" x="247" y="1534" scale="1.074126" layer="1" hasInfluenceArea="no" />
-      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.12" layer="0" hasInfluenceArea="no" />
     </objects>
     <active-areas>
       <active-area id="AbrirPistaCruce" rectangular="yes" x="21" y="20" width="151" height="201" hasInfluenceArea="no" behaviour="first-action">
@@ -392,7 +414,7 @@ Siguiendo el camino que baja desde el árbol y luego a mano derecha.</speak-play
     </name>
     <default-initial-position x="400" y="450" />
     <objects>
-      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.12" layer="0" hasInfluenceArea="no" />
       <object-ref idTarget="BotonVolver" x="312" y="2054" scale="1.432168" layer="1" hasInfluenceArea="no" />
     </objects>
     <active-areas>
@@ -431,7 +453,7 @@ A continuación, gira a la izquierda.</speak-player>
     <default-initial-position x="400" y="450" />
     <objects>
       <object-ref idTarget="BotonVolver" x="240" y="1537" scale="1.074126" layer="1" hasInfluenceArea="no" />
-      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.12" layer="0" hasInfluenceArea="no" />
     </objects>
     <active-areas>
       <active-area id="AbrirPistaEscaleras" rectangular="yes" x="25" y="28" width="145" height="196" hasInfluenceArea="no" behaviour="first-action">
@@ -467,7 +489,7 @@ A continuación, gira a la izquierda.</speak-player>
     </name>
     <default-initial-position x="400" y="450" />
     <objects>
-      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.12" layer="0" hasInfluenceArea="no" />
       <object-ref idTarget="BotonVolver" x="240" y="1534" scale="1.074126" layer="1" hasInfluenceArea="no" />
     </objects>
     <active-areas>
@@ -506,7 +528,7 @@ A continuación, gira a la izquierda.</speak-player>
     <default-initial-position x="400" y="450" />
     <objects>
       <object-ref idTarget="BotonVolver" x="320" y="2048" scale="1.432168" layer="1" hasInfluenceArea="no" />
-      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.12" layer="0" hasInfluenceArea="no" />
     </objects>
     <active-areas>
       <active-area id="AbrirPistaTunel" rectangular="yes" x="23" y="17" width="160" height="204" hasInfluenceArea="no" behaviour="first-action">
@@ -543,7 +565,7 @@ A continuación, gira a la izquierda.</speak-player>
     <default-initial-position x="400" y="450" />
     <objects>
       <object-ref idTarget="BotonVolver" x="328" y="2046" scale="1.432168" layer="1" hasInfluenceArea="no" />
-      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.12" layer="0" hasInfluenceArea="no" />
     </objects>
     <active-areas>
       <active-area id="AbrirPistaEntradaBosque" rectangular="yes" x="18" y="19" width="164" height="214" hasInfluenceArea="no" behaviour="first-action">
@@ -580,7 +602,7 @@ A continuación, gira a la izquierda.</speak-player>
     <default-initial-position x="400" y="450" />
     <objects>
       <object-ref idTarget="BotonVolver" x="247" y="1540" scale="1.074126" layer="1" hasInfluenceArea="no" />
-      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.2" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonPista" x="95" y="200" scale="0.12" layer="0" hasInfluenceArea="no" />
     </objects>
     <active-areas>
       <active-area id="AbrirPistaSalidaBosque" rectangular="yes" x="18" y="19" width="157" height="214" hasInfluenceArea="no" behaviour="first-action">
@@ -660,7 +682,7 @@ A continuación, gira a la izquierda.</speak-player>
       <character-ref idTarget="RAM" x="743" y="1331" scale="0.9488741" orientation="2" layer="0" hasInfluenceArea="no" />
     </characters>
   </scene>
-  <scene id="PistasFDI" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+  <scene id="Pistas" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
     <documentation>
     </documentation>
     <resources name="No name">
@@ -669,6 +691,25 @@ A continuación, gira a la izquierda.</speak-player>
     <name>
     </name>
     <default-initial-position x="400" y="450" />
+    <characters>
+      <character-ref idTarget="Professor" x="238" y="154" scale="0.1601907" orientation="2" layer="2" hasInfluenceArea="no">
+        <condition>
+          <less-equals-than var="IdPista" value="3" />
+          <not-equals var="IdPista" value="0" />
+        </condition>
+      </character-ref>
+      <character-ref idTarget="Dino" x="69" y="162" scale="0.09768212" orientation="2" layer="1" hasInfluenceArea="no">
+        <condition>
+          <greater-than var="IdPista" value="3" />
+          <less-equals-than var="IdPista" value="6" />
+        </condition>
+      </character-ref>
+      <character-ref idTarget="RAM" x="150" y="149" scale="0.1275014" orientation="2" layer="0" hasInfluenceArea="no">
+        <condition>
+          <greater-than var="IdPista" value="6" />
+        </condition>
+      </character-ref>
+    </characters>
   </scene>
   <scene id="FDIFinal" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
     <documentation>
@@ -1141,7 +1182,7 @@ A continuación, gira a la izquierda.</speak-player>
         <condition />
       </effect>
     </dialogue-node>
-    <dialogue-node nodeindex="1" editor-x="46" editor-y="317">
+    <dialogue-node nodeindex="1" editor-x="340" editor-y="243">
       <speak-char idTarget="Professor">
         <resources name="No name" />
         <text>Cuando quieras escanear un código, ábrela desde el inventario.</text>
@@ -1177,14 +1218,39 @@ A continuación, gira a la izquierda.</speak-player>
         <text>¡Buena suerte!</text>
       </speak-char>
       <condition />
-      <end-conversation>
-        <effect>
-          <activate flag="FarmaciaEscenaFinal" />
-          <condition />
-          <trigger-scene idTarget="EscenaProfesorDino" x="142" y="132" transitionTime="0" transitionType="0" />
-          <condition />
-        </effect>
-      </end-conversation>
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="AdivinanzaResueltaFarmacia">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>¡Enhorabuena!</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Se pensaba que el cuerno de unicornio tenía extraordinarias cualidades terapéuticas, así como que detectaba venenos. Ahora sabemos que solo se trataba de un simple cuerno de narval... Interesante, ¿cierto? Intenta descubrir lo siguiente ¡Ánimo!</text>
+      </speak-char>
+      <condition>
+        <inactive flag="UnicornioResuelto" />
+      </condition>
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Una báscula no podía faltar en ninguna farmacia, eran imprescindibles para calcular las dosis medicinales que daban a los clientes. Solo te queda encontrar algo más en este museo. ¡Suerte!</text>
+      </speak-char>
+      <condition>
+        <active flag="UnicornioResuelto" />
+        <inactive flag="BasculaResuelto" />
+      </condition>
+      <speak-player>
+        <resources name="No name" />
+        <text>Se trata de una instalación museográfica de un laboratorio de finales del siglo XVI, época en la que, a través de la alquimia, se introduce el medicamento químico en el arsenal terapéutico de Occidente.</text>
+      </speak-player>
+      <condition>
+        <active flag="BasculaResuelto" />
+      </condition>
+      <end-conversation />
     </dialogue-node>
   </graph-conversation>
   <graph-conversation id="ConverProfesorDino">
@@ -1295,19 +1361,21 @@ A continuación, gira a la izquierda.</speak-player>
         <text>Aquí tienes el primer hueso, puedes consultar cuántos huesos tienes en tu inventario.</text>
       </speak-char>
       <condition />
+      <child nodeindex="3" />
+      <effect>
+        <generate-object idTarget="Hueso" />
+        <condition />
+        <increment var="NumHuesos" value="1" />
+        <condition />
+      </effect>
+    </dialogue-node>
+    <dialogue-node nodeindex="3" editor-x="423" editor-y="474">
       <speak-char idTarget="Dino">
         <resources name="No name" />
         <text>Buena suerte y a divertirse ¡ROOOAAR!</text>
       </speak-char>
       <condition />
-      <end-conversation>
-        <effect>
-          <generate-object idTarget="Hueso" />
-          <condition />
-          <increment var="NumHuesos" value="1" />
-          <condition />
-        </effect>
-      </end-conversation>
+      <end-conversation />
     </dialogue-node>
   </graph-conversation>
   <graph-conversation id="CuentaHuesos">
@@ -1991,15 +2059,14 @@ A continuación, gira a la izquierda.</speak-player>
         <text>Ahora que has encontrado el Home Pong, te propongo que busques este otro compañero:</text>
       </speak-char>
       <condition>
-        <inactive flag="PongResuelto" />
+        <equals var="IdPista" value="7" />
       </condition>
       <speak-char idTarget="RAM">
         <resources name="No name" />
         <text>Solo falta uno de mis hermanos. ¿Podrás encontrarlo?</text>
       </speak-char>
       <condition>
-        <inactive flag="RecreativaResuelto" />
-        <active flag="PongResuelto" />
+        <equals var="IdPista" value="8" />
       </condition>
       <end-conversation />
     </dialogue-node>
@@ -2057,6 +2124,56 @@ A continuación, gira a la izquierda.</speak-player>
           <condition />
         </effect>
       </end-conversation>
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="EnunciadoPistas">
+    <dialogue-node nodeindex="0" editor-x="132" editor-y="76">
+      <speak-player>
+        <resources name="No name" />
+        <text>Con la mitad de pinar y de rival el final, el nombre formarás del unicornio del mar.</text>
+      </speak-player>
+      <condition>
+        <equals var="IdPista" value="1" />
+      </condition>
+      <speak-player>
+        <resources name="No name" />
+        <text>Con mis dos grandes brazos y mi gran astucia, comparo los pesos e imparto justicia.</text>
+      </speak-player>
+      <condition>
+        <equals var="IdPista" value="2" />
+      </condition>
+      <speak-player>
+        <resources name="No name" />
+        <text>Parece sacado de un cuento, entre ciencia y brujería. Con animales disecados, sus enfermedades curarían.</text>
+      </speak-player>
+      <condition>
+        <equals var="IdPista" value="3" />
+      </condition>
+      <child nodeindex="1" />
+    </dialogue-node>
+    <dialogue-node nodeindex="1" editor-x="479" editor-y="133">
+      <speak-player>
+        <resources name="No name" />
+        <text>Los relojes hacen tic, toc, Los jóvenes, TikToks, Y este, que es más viejo Solo hace "ping, PONG"</text>
+      </speak-player>
+      <condition>
+        <equals var="IdPista" value="7" />
+      </condition>
+      <speak-player>
+        <resources name="No name" />
+        <text>Ni Microsoft ni Sony le hacen temer; Con palancas y botones, La gente hacía cola a montones. No por nada se llama "Líder".</text>
+      </speak-player>
+      <condition>
+        <equals var="IdPista" value="8" />
+      </condition>
+      <speak-player>
+        <resources name="No name" />
+        <text>Esta manzana  No me quitará el hambre. Después de la de Adán y Eva Esta fue la primera.</text>
+      </speak-player>
+      <condition>
+        <equals var="IdPista" value="9" />
+      </condition>
+      <end-conversation />
     </dialogue-node>
   </graph-conversation>
   <object id="ArbolFarmacia" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
@@ -2757,6 +2874,44 @@ A continuación, gira a la izquierda.</speak-player>
             </message>
           </qr-scanner>
           <condition />
+          <trigger-scene idTarget="Pistas" x="142" y="132" transitionTime="0" transitionType="0" />
+          <condition>
+            <active flag="QREscaneado" />
+          </condition>
+          <trigger-scene idTarget="FDIFinal" x="142" y="132" transitionTime="0" transitionType="0" />
+          <condition>
+            <active flag="QRFinal" />
+          </condition>
+          <deactivate flag="QRFinal" />
+          <condition />
+          <trigger-scene idTarget="EscenaProfesorDino" x="142" y="132" transitionTime="0" transitionType="0" />
+          <condition>
+            <active flag="QRFinFarmacia" />
+          </condition>
+          <deactivate flag="QRFinFarmacia" />
+          <condition />
+          <trigger-scene idTarget="EscenaDinoRAM" x="142" y="132" transitionTime="0" transitionType="0" />
+          <condition>
+            <active flag="QRFinHistoria" />
+          </condition>
+          <deactivate flag="QRFinHistoria" />
+          <condition />
+          <trigger-conversation idTarget="AdivinanzaResueltaFarmacia" />
+          <condition>
+            <active flag="QREscaneado" />
+            <less-equals-than var="IdPista" value="3" />
+          </condition>
+          <trigger-conversation idTarget="AdivinanzaResueltaFDI" />
+          <condition>
+            <active flag="QREscaneado" />
+            <greater-than var="IdPista" value="6" />
+          </condition>
+          <trigger-conversation idTarget="EnunciadoPistas" />
+          <condition>
+            <active flag="QREscaneado" />
+          </condition>
+          <deactivate flag="QREscaneado" />
+          <condition />
         </effect>
       </use>
     </actions>
@@ -2790,12 +2945,9 @@ A continuación, gira a la izquierda.</speak-player>
     </documentation>
     <condition />
     <effect>
-      <trigger-scene idTarget="PistasFDI" x="142" y="132" transitionTime="0" transitionType="0" />
+      <activate flag="QREscaneado" />
       <condition />
-      <show-text x="300" y="300" frontColor="#74A3DDFF" borderColor="#524B4BFF" uri="">Los relojes hacen tic, toc,
-Los jóvenes, TikToks,
-Y este, que es más viejo
-Solo hace "ping, PONG"</show-text>
+      <set-value var="IdPista" value="7" />
       <condition />
     </effect>
   </qr-code>
@@ -2806,14 +2958,9 @@ Solo hace "ping, PONG"</show-text>
     </documentation>
     <condition />
     <effect>
-      <trigger-conversation idTarget="AdivinanzaResueltaFDI" />
-      <condition />
-      <show-text x="300" y="300" frontColor="#74A3DDFF" borderColor="#524B4BFF" uri="">Ni Microsoft ni Sony le hacen temer;
-Con palancas y botones,
-La gente hacía cola a montones.
-No por nada se llama "Líder".</show-text>
-      <condition />
       <activate flag="PongResuelto" />
+      <condition />
+      <set-value var="IdPista" value="8" />
       <condition />
     </effect>
   </qr-code>
@@ -2824,14 +2971,9 @@ No por nada se llama "Líder".</show-text>
     </documentation>
     <condition />
     <effect>
-      <trigger-conversation idTarget="AdivinanzaResueltaFDI" />
-      <condition />
-      <show-text x="300" y="300" frontColor="#709ED6FF" borderColor="#4E4848FF" uri="">Esta manzana 
-No me quitará el hambre.
-Después de la de Adán y Eva
-Esta fue la primera.</show-text>
-      <condition />
       <activate flag="RecreativaResuelto" />
+      <condition />
+      <set-value var="IdPista" value="9" />
       <condition />
     </effect>
   </qr-code>
@@ -2844,7 +2986,67 @@ Esta fue la primera.</show-text>
     <effect>
       <activate flag="AppleResuelto" />
       <condition />
-      <trigger-scene idTarget="FDIFinal" x="142" y="132" transitionTime="0" transitionType="0" />
+      <activate flag="QRFinal" />
+      <condition />
+      <set-value var="IdPista" value="0" />
+      <condition />
+    </effect>
+  </qr-code>
+  <qr-code id="EntradaFarmacia">
+    <content>
+    </content>
+    <documentation>
+    </documentation>
+    <condition />
+    <effect>
+      <activate flag="QREscaneado" />
+      <condition />
+      <set-value var="IdPista" value="1" />
+      <condition />
+    </effect>
+  </qr-code>
+  <qr-code id="PistaCuernoUnicornio">
+    <content>
+    </content>
+    <documentation>
+    </documentation>
+    <condition />
+    <effect>
+      <activate flag="UnicornioResuelto" />
+      <condition />
+      <set-value var="IdPista" value="2" />
+      <condition />
+      <activate flag="QREscaneado" />
+      <condition />
+    </effect>
+  </qr-code>
+  <qr-code id="PistaBáscula">
+    <content>
+    </content>
+    <documentation>
+    </documentation>
+    <condition />
+    <effect>
+      <activate flag="BasculaResuelto" />
+      <condition />
+      <set-value var="IdPista" value="3" />
+      <condition />
+      <activate flag="QREscaneado" />
+      <condition />
+    </effect>
+  </qr-code>
+  <qr-code id="PistaAlquimia">
+    <content>
+    </content>
+    <documentation>
+    </documentation>
+    <condition />
+    <effect>
+      <activate flag="QRFinFarmacia" />
+      <condition />
+      <activate flag="FarmaciaEscenaFinal" />
+      <condition />
+      <set-value var="IdPista" value="0" />
       <condition />
     </effect>
   </qr-code>
