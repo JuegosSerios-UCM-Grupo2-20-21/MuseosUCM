@@ -67,6 +67,7 @@
         <condition>
           <inactive flag="IntroFarmacia" />
           <active flag="FarmaciaEncontrada" />
+          <inactive flag="AppleResuelto" />
         </condition>
         <effect>
           <trigger-conversation idTarget="IntroFarmacia" />
@@ -78,9 +79,21 @@
         <condition>
           <active flag="IntroFarmacia" />
           <active flag="FarmaciaEscenaFinal" />
+          <inactive flag="AppleResuelto" />
         </condition>
         <effect>
           <trigger-conversation idTarget="ConverProfesorDino" />
+          <condition />
+        </effect>
+      </talk-to>
+      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Final</documentation>
+        <condition>
+          <active flag="AppleResuelto" />
+          <inactive flag="JuegoTerminado" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="FinalJuego" />
           <condition />
         </effect>
       </talk-to>
@@ -121,6 +134,7 @@
         <condition>
           <active flag="HistoriaEncontrada" />
           <inactive flag="IntroHistoria" />
+          <inactive flag="AppleResuelto" />
         </condition>
         <effect>
           <trigger-conversation idTarget="IntroHistoria" />
@@ -131,9 +145,20 @@
         <documentation>Created with target conversation: ConverDinoRAM</documentation>
         <condition>
           <active flag="IntroHistoria" />
+          <inactive flag="AppleResuelto" />
         </condition>
         <effect>
           <trigger-conversation idTarget="ConverDinoRAM" />
+          <condition />
+        </effect>
+      </talk-to>
+      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
+        <condition>
+          <active flag="AppleResuelto" />
+          <inactive flag="JuegoTerminado" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="FinalJuego" />
           <condition />
         </effect>
       </talk-to>
@@ -175,6 +200,7 @@
         <condition>
           <active flag="FDIEncontrada" />
           <inactive flag="IntroFDI" />
+          <inactive flag="AppleResuelto" />
         </condition>
         <effect>
           <trigger-conversation idTarget="IntroFDI" />
@@ -183,8 +209,23 @@
       </talk-to>
       <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
         <documentation>Created with target conversation: ResueltoPONG</documentation>
+        <condition>
+          <inactive flag="AppleResuelto" />
+          <active flag="IntroFDI" />
+        </condition>
         <effect>
           <trigger-conversation idTarget="AdivinanzaResueltaFDI" />
+          <condition />
+        </effect>
+      </talk-to>
+      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Final</documentation>
+        <condition>
+          <active flag="AppleResuelto" />
+          <inactive flag="JuegoTerminado" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="FinalJuego" />
           <condition />
         </effect>
       </talk-to>
@@ -213,7 +254,11 @@
     </name>
     <default-initial-position x="400" y="450" />
     <objects>
-      <object-ref idTarget="BotonVolver" x="49" y="170" scale="0.1859012" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonVolver" x="49" y="170" scale="0.1859012" layer="0" hasInfluenceArea="no">
+        <condition>
+          <equals var="NumHuesos" value="1" />
+        </condition>
+      </object-ref>
     </objects>
     <characters>
       <character-ref idTarget="Professor" x="243" y="148" scale="0.137649" orientation="2" layer="2" hasInfluenceArea="no" />
@@ -587,7 +632,11 @@ A continuación, gira a la izquierda.</speak-player>
     </name>
     <default-initial-position x="400" y="450" />
     <objects>
-      <object-ref idTarget="BotonVolver" x="57" y="170" scale="0.2449053" layer="0" hasInfluenceArea="no" />
+      <object-ref idTarget="BotonVolver" x="57" y="170" scale="0.2449053" layer="0" hasInfluenceArea="no">
+        <condition>
+          <equals var="NumBitCoin" value="1" />
+        </condition>
+      </object-ref>
     </objects>
     <characters>
       <character-ref idTarget="Dino" x="98" y="138" scale="0.0846855" orientation="2" layer="2" hasInfluenceArea="no" />
@@ -620,6 +669,24 @@ A continuación, gira a la izquierda.</speak-player>
     <name>
     </name>
     <default-initial-position x="400" y="450" />
+  </scene>
+  <scene id="FDIFinal" hideInventory="no" start="no" playerLayer="-1" playerScale="1" class="accesible" type="area">
+    <documentation>
+    </documentation>
+    <resources name="No name">
+      <asset type="background" uri="assets/background/fondoNegro.jpg" />
+    </resources>
+    <name>
+    </name>
+    <default-initial-position x="400" y="450" />
+    <objects>
+      <object-ref idTarget="BotonVolver" x="61" y="167" scale="0.2105481" layer="2" hasInfluenceArea="no" />
+    </objects>
+    <characters>
+      <character-ref idTarget="RAM" x="224" y="121" scale="0.1290145" orientation="2" layer="3" hasInfluenceArea="no" />
+      <character-ref idTarget="Dino" x="67" y="137" scale="0.0750739" orientation="2" layer="1" hasInfluenceArea="no" />
+      <character-ref idTarget="Professor" x="146" y="157" scale="0.1694332" orientation="2" layer="0" hasInfluenceArea="no" />
+    </characters>
   </scene>
   <map-scene id="Ciu" cameraType="Aerial2D" renderStyle="Tile" tileMetaIdentifier="OSMTile" usesGameplayArea="no" gameplayArea="0 0 0 0" center="(40.4438559497666, -3.72701447242189)" zoom="18" start="yes">
     <map-element targetId="Professor" layer="0" scale="0.08" orientation="2">
@@ -1681,7 +1748,7 @@ A continuación, gira a la izquierda.</speak-player>
       <condition />
       <speak-char idTarget="RAM">
         <resources name="No name" />
-        <text>Aquí tienes una pista y un bitcoin, úsalo con sabiduría.</text>
+        <text>Aquí tienes un bitcoin, úsalo con sabiduría.</text>
       </speak-char>
       <condition />
       <speak-char idTarget="RAM">
@@ -1909,15 +1976,7 @@ A continuación, gira a la izquierda.</speak-player>
         <text>01001000 01100001 01110011 01110100 01100001 00100000 01101100 01110101 01100101 01100111 01101111</text>
       </speak-char>
       <condition />
-      <end-conversation>
-        <effect>
-          <qr-scanner selection-type="BlackList">
-            <message>
-            </message>
-          </qr-scanner>
-          <condition />
-        </effect>
-      </end-conversation>
+      <end-conversation />
     </dialogue-node>
   </graph-conversation>
   <graph-conversation id="AdivinanzaResueltaFDI">
@@ -1942,16 +2001,62 @@ A continuación, gira a la izquierda.</speak-player>
         <inactive flag="RecreativaResuelto" />
         <active flag="PongResuelto" />
       </condition>
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="FinalJuego">
+    <dialogue-node nodeindex="0" editor-x="306" editor-y="52">
       <speak-char idTarget="RAM">
         <resources name="No name" />
-        <text>Vuelve al lugar de comienzo para terminar. ¡Corre, puede que seas el primero!</text>
+        <text>¡Enhorabuena! Has terminado todo el recorrido.</text>
       </speak-char>
-      <condition>
-        <active flag="PongResuelto" />
-        <active flag="RecreativaResuelto" />
-        <inactive flag="AppleResuelto" />
-      </condition>
-      <end-conversation />
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>¿A que te lo has pasado bien?</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>¡ROOOOAAAR!</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>Y hemos aprendido mucho por el camino.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Recuerda enseñarle a tus profes cuantos huesos y bitcoins tienes.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>El juego acaba aquí, pero hay muchos más museos en la Complutense.</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Dino">
+        <resources name="No name" />
+        <text>¡Yo los voy a visitar todos!</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>¡Nos vemos pronto!</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>11000010 10100001 01000001 01100100 01101001 11000011 10110011 01110011 00100001</text>
+      </speak-char>
+      <condition />
+      <end-conversation>
+        <effect>
+          <activate flag="JuegoTerminado" />
+          <condition />
+        </effect>
+      </end-conversation>
     </dialogue-node>
   </graph-conversation>
   <object id="ArbolFarmacia" returnsWhenDragged="yes" behaviour="first-action" resources-transition-time="0">
@@ -2687,12 +2792,10 @@ A continuación, gira a la izquierda.</speak-player>
     <effect>
       <trigger-scene idTarget="PistasFDI" x="142" y="132" transitionTime="0" transitionType="0" />
       <condition />
-      <show-text x="300" y="300" frontColor="#74A3DDFF" borderColor="#524B4BFF" uri="">Tic toc, hace el reloj.
-TikTok hacen los jóvenes
-Y este, que es más viejo,
-Solo hace "ping, PONG".
-
-Busca esta videoconsola, y te llevará a la siguiente pista.</show-text>
+      <show-text x="300" y="300" frontColor="#74A3DDFF" borderColor="#524B4BFF" uri="">Los relojes hacen tic, toc,
+Los jóvenes, TikToks,
+Y este, que es más viejo
+Solo hace "ping, PONG"</show-text>
       <condition />
     </effect>
   </qr-code>
@@ -2732,12 +2835,17 @@ Esta fue la primera.</show-text>
       <condition />
     </effect>
   </qr-code>
-  <qr-code id="FinJuego">
+  <qr-code id="PistaAppleII">
     <content>
     </content>
     <documentation>
     </documentation>
     <condition />
-    <effect />
+    <effect>
+      <activate flag="AppleResuelto" />
+      <condition />
+      <trigger-scene idTarget="FDIFinal" x="142" y="132" transitionTime="0" transitionType="0" />
+      <condition />
+    </effect>
   </qr-code>
 </eAdventure>
