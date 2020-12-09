@@ -211,21 +211,23 @@
         <condition>
           <active flag="FDIEncontrada" />
           <inactive flag="IntroFDI" />
-          <inactive flag="AppleResuelto" />
         </condition>
         <effect>
           <trigger-conversation idTarget="IntroFDI" />
+          <condition />
+          <activate flag="IntroFDI" />
           <condition />
         </effect>
       </talk-to>
       <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
         <documentation>Created with target conversation: ResueltoPONG</documentation>
         <condition>
-          <inactive flag="AppleResuelto" />
-          <active flag="IntroFDI" />
+          <greater-than var="IdPista" value="6" />
         </condition>
         <effect>
           <trigger-conversation idTarget="AdivinanzaResueltaFDI" />
+          <condition />
+          <trigger-conversation idTarget="EnunciadoPistas" />
           <condition />
         </effect>
       </talk-to>
@@ -237,17 +239,6 @@
         </condition>
         <effect>
           <trigger-conversation idTarget="FinalJuego" />
-          <condition />
-        </effect>
-      </talk-to>
-      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
-        <documentation>Repite pista
-</documentation>
-        <condition>
-          <greater-than var="IdPista" value="6" />
-        </condition>
-        <effect>
-          <trigger-conversation idTarget="EnunciadoPistas" />
           <condition />
         </effect>
       </talk-to>
@@ -1221,38 +1212,6 @@ A continuación, gira a la izquierda.</speak-player>
       <end-conversation />
     </dialogue-node>
   </graph-conversation>
-  <graph-conversation id="AdivinanzaResueltaFarmacia">
-    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
-      <speak-char idTarget="Professor">
-        <resources name="No name" />
-        <text>¡Enhorabuena!</text>
-      </speak-char>
-      <condition />
-      <speak-char idTarget="Professor">
-        <resources name="No name" />
-        <text>Se pensaba que el cuerno de unicornio tenía extraordinarias cualidades terapéuticas, así como que detectaba venenos. Ahora sabemos que solo se trataba de un simple cuerno de narval... Interesante, ¿cierto? Intenta descubrir lo siguiente ¡Ánimo!</text>
-      </speak-char>
-      <condition>
-        <inactive flag="UnicornioResuelto" />
-      </condition>
-      <speak-char idTarget="Professor">
-        <resources name="No name" />
-        <text>Una báscula no podía faltar en ninguna farmacia, eran imprescindibles para calcular las dosis medicinales que daban a los clientes. Solo te queda encontrar algo más en este museo. ¡Suerte!</text>
-      </speak-char>
-      <condition>
-        <active flag="UnicornioResuelto" />
-        <inactive flag="BasculaResuelto" />
-      </condition>
-      <speak-player>
-        <resources name="No name" />
-        <text>Se trata de una instalación museográfica de un laboratorio de finales del siglo XVI, época en la que, a través de la alquimia, se introduce el medicamento químico en el arsenal terapéutico de Occidente.</text>
-      </speak-player>
-      <condition>
-        <active flag="BasculaResuelto" />
-      </condition>
-      <end-conversation />
-    </dialogue-node>
-  </graph-conversation>
   <graph-conversation id="ConverProfesorDino">
     <dialogue-node nodeindex="0" editor-x="69" editor-y="86">
       <speak-char idTarget="Professor">
@@ -2044,31 +2003,12 @@ A continuación, gira a la izquierda.</speak-player>
         <text>01001000 01100001 01110011 01110100 01100001 00100000 01101100 01110101 01100101 01100111 01101111</text>
       </speak-char>
       <condition />
-      <end-conversation />
-    </dialogue-node>
-  </graph-conversation>
-  <graph-conversation id="AdivinanzaResueltaFDI">
-    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
-      <speak-char idTarget="RAM">
-        <resources name="No name" />
-        <text>¡Ya queda menos!</text>
-      </speak-char>
-      <condition />
-      <speak-char idTarget="RAM">
-        <resources name="No name" />
-        <text>Ahora que has encontrado el Home Pong, te propongo que busques este otro compañero:</text>
-      </speak-char>
-      <condition>
-        <equals var="IdPista" value="7" />
-      </condition>
-      <speak-char idTarget="RAM">
-        <resources name="No name" />
-        <text>Solo falta uno de mis hermanos. ¿Podrás encontrarlo?</text>
-      </speak-char>
-      <condition>
-        <equals var="IdPista" value="8" />
-      </condition>
-      <end-conversation />
+      <end-conversation>
+        <effect>
+          <deactivate flag="IntroFDI" />
+          <condition />
+        </effect>
+      </end-conversation>
     </dialogue-node>
   </graph-conversation>
   <graph-conversation id="FinalJuego">
@@ -2170,6 +2110,62 @@ A continuación, gira a la izquierda.</speak-player>
         <resources name="No name" />
         <text>Esta manzana  No me quitará el hambre. Después de la de Adán y Eva Esta fue la primera.</text>
       </speak-player>
+      <condition>
+        <equals var="IdPista" value="9" />
+      </condition>
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="AdivinanzaResueltaFarmacia">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>¡Enhorabuena!</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Se pensaba que el cuerno de unicornio tenía extraordinarias cualidades terapéuticas, así como que detectaba venenos. Ahora sabemos que solo se trataba de un simple cuerno de narval... Interesante, ¿cierto? Intenta descubrir lo siguiente ¡Ánimo!</text>
+      </speak-char>
+      <condition>
+        <inactive flag="UnicornioResuelto" />
+      </condition>
+      <speak-char idTarget="Professor">
+        <resources name="No name" />
+        <text>Una báscula no podía faltar en ninguna farmacia, eran imprescindibles para calcular las dosis medicinales que daban a los clientes. Solo te queda encontrar algo más en este museo. ¡Suerte!</text>
+      </speak-char>
+      <condition>
+        <active flag="UnicornioResuelto" />
+        <inactive flag="BasculaResuelto" />
+      </condition>
+      <speak-player>
+        <resources name="No name" />
+        <text>Se trata de una instalación museográfica de un laboratorio de finales del siglo XVI, época en la que, a través de la alquimia, se introduce el medicamento químico en el arsenal terapéutico de Occidente.</text>
+      </speak-player>
+      <condition>
+        <active flag="BasculaResuelto" />
+      </condition>
+      <end-conversation />
+    </dialogue-node>
+  </graph-conversation>
+  <graph-conversation id="AdivinanzaResueltaFDI">
+    <dialogue-node nodeindex="0" editor-x="50" editor-y="50">
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>¡Ya queda menos!</text>
+      </speak-char>
+      <condition />
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>Esta consola solo incluía el PONG: un tenis de mesa en blanco y negro. ¡Cómo han cambiado las cosas!</text>
+      </speak-char>
+      <condition>
+        <equals var="IdPista" value="8" />
+      </condition>
+      <speak-char idTarget="RAM">
+        <resources name="No name" />
+        <text>Estas máquinas tenían varios juegos, y la gente iba a los salones recreativos a jugar. ¿Te imaginas jugar con estos botones?</text>
+      </speak-char>
       <condition>
         <equals var="IdPista" value="9" />
       </condition>
@@ -2938,60 +2934,6 @@ A continuación, gira a la izquierda.</speak-player>
       <condition />
     </effect>
   </qr-code>
-  <qr-code id="EntradaInformatica">
-    <content>
-    </content>
-    <documentation>
-    </documentation>
-    <condition />
-    <effect>
-      <activate flag="QREscaneado" />
-      <condition />
-      <set-value var="IdPista" value="7" />
-      <condition />
-    </effect>
-  </qr-code>
-  <qr-code id="PistaPONGAtari">
-    <content>
-    </content>
-    <documentation>
-    </documentation>
-    <condition />
-    <effect>
-      <activate flag="PongResuelto" />
-      <condition />
-      <set-value var="IdPista" value="8" />
-      <condition />
-    </effect>
-  </qr-code>
-  <qr-code id="PistaRecreativaLider">
-    <content>
-    </content>
-    <documentation>
-    </documentation>
-    <condition />
-    <effect>
-      <activate flag="RecreativaResuelto" />
-      <condition />
-      <set-value var="IdPista" value="9" />
-      <condition />
-    </effect>
-  </qr-code>
-  <qr-code id="PistaAppleII">
-    <content>
-    </content>
-    <documentation>
-    </documentation>
-    <condition />
-    <effect>
-      <activate flag="AppleResuelto" />
-      <condition />
-      <activate flag="QRFinal" />
-      <condition />
-      <set-value var="IdPista" value="0" />
-      <condition />
-    </effect>
-  </qr-code>
   <qr-code id="EntradaFarmacia">
     <content>
     </content>
@@ -3045,6 +2987,60 @@ A continuación, gira a la izquierda.</speak-player>
       <activate flag="QRFinFarmacia" />
       <condition />
       <activate flag="FarmaciaEscenaFinal" />
+      <condition />
+      <set-value var="IdPista" value="0" />
+      <condition />
+    </effect>
+  </qr-code>
+  <qr-code id="EntradaInformatica">
+    <content>
+    </content>
+    <documentation>
+    </documentation>
+    <condition />
+    <effect>
+      <activate flag="QREscaneado" />
+      <condition />
+      <set-value var="IdPista" value="7" />
+      <condition />
+    </effect>
+  </qr-code>
+  <qr-code id="PistaPONGAtari">
+    <content>
+    </content>
+    <documentation>
+    </documentation>
+    <condition />
+    <effect>
+      <activate flag="PongResuelto" />
+      <condition />
+      <set-value var="IdPista" value="8" />
+      <condition />
+    </effect>
+  </qr-code>
+  <qr-code id="PistaRecreativaLider">
+    <content>
+    </content>
+    <documentation>
+    </documentation>
+    <condition />
+    <effect>
+      <activate flag="RecreativaResuelto" />
+      <condition />
+      <set-value var="IdPista" value="9" />
+      <condition />
+    </effect>
+  </qr-code>
+  <qr-code id="PistaAppleII">
+    <content>
+    </content>
+    <documentation>
+    </documentation>
+    <condition />
+    <effect>
+      <activate flag="AppleResuelto" />
+      <condition />
+      <activate flag="QRFinal" />
       <condition />
       <set-value var="IdPista" value="0" />
       <condition />
