@@ -207,7 +207,8 @@
     <voice name="" synthesizeAlways="no" />
     <actions>
       <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
-        <documentation>Created with target conversation: IntroFDI</documentation>
+        <documentation>Intro
+</documentation>
         <condition>
           <active flag="FDIEncontrada" />
           <inactive flag="IntroFDI" />
@@ -220,18 +221,6 @@
         </effect>
       </talk-to>
       <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
-        <documentation>Created with target conversation: ResueltoPONG</documentation>
-        <condition>
-          <greater-than var="IdPista" value="6" />
-        </condition>
-        <effect>
-          <trigger-conversation idTarget="AdivinanzaResueltaFDI" />
-          <condition />
-          <trigger-conversation idTarget="EnunciadoPistas" />
-          <condition />
-        </effect>
-      </talk-to>
-      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
         <documentation>Final</documentation>
         <condition>
           <active flag="AppleResuelto" />
@@ -239,6 +228,16 @@
         </condition>
         <effect>
           <trigger-conversation idTarget="FinalJuego" />
+          <condition />
+        </effect>
+      </talk-to>
+      <talk-to needsGoTo="yes" keepDistance="35" not-effects="no">
+        <documentation>Repite pista</documentation>
+        <condition>
+          <greater-than var="IdPista" value="6" />
+        </condition>
+        <effect>
+          <trigger-conversation idTarget="EnunciadoPistas" />
           <condition />
         </effect>
       </talk-to>
@@ -2128,22 +2127,21 @@ A continuación, gira a la izquierda.</speak-player>
         <text>Se pensaba que el cuerno de unicornio tenía extraordinarias cualidades terapéuticas, así como que detectaba venenos. Ahora sabemos que solo se trataba de un simple cuerno de narval... Interesante, ¿cierto? Intenta descubrir lo siguiente ¡Ánimo!</text>
       </speak-char>
       <condition>
-        <inactive flag="UnicornioResuelto" />
+        <equals var="IdPista" value="2" />
       </condition>
       <speak-char idTarget="Professor">
         <resources name="No name" />
         <text>Una báscula no podía faltar en ninguna farmacia, eran imprescindibles para calcular las dosis medicinales que daban a los clientes. Solo te queda encontrar algo más en este museo. ¡Suerte!</text>
       </speak-char>
       <condition>
-        <active flag="UnicornioResuelto" />
-        <inactive flag="BasculaResuelto" />
+        <equals var="IdPista" value="3" />
       </condition>
       <speak-player>
         <resources name="No name" />
         <text>Se trata de una instalación museográfica de un laboratorio de finales del siglo XVI, época en la que, a través de la alquimia, se introduce el medicamento químico en el arsenal terapéutico de Occidente.</text>
       </speak-player>
       <condition>
-        <active flag="BasculaResuelto" />
+        <equals var="IdPista" value="4" />
       </condition>
       <end-conversation />
     </dialogue-node>
@@ -2896,11 +2894,13 @@ A continuación, gira a la izquierda.</speak-player>
           <condition>
             <active flag="QREscaneado" />
             <less-equals-than var="IdPista" value="3" />
+            <active flag="UnicornioResuelto" />
           </condition>
           <trigger-conversation idTarget="AdivinanzaResueltaFDI" />
           <condition>
             <active flag="QREscaneado" />
             <greater-than var="IdPista" value="6" />
+            <active flag="PongResuelto" />
           </condition>
           <trigger-conversation idTarget="EnunciadoPistas" />
           <condition>
@@ -3016,6 +3016,8 @@ A continuación, gira a la izquierda.</speak-player>
       <condition />
       <set-value var="IdPista" value="8" />
       <condition />
+      <activate flag="QREscaneado" />
+      <condition />
     </effect>
   </qr-code>
   <qr-code id="PistaRecreativaLider">
@@ -3028,6 +3030,8 @@ A continuación, gira a la izquierda.</speak-player>
       <activate flag="RecreativaResuelto" />
       <condition />
       <set-value var="IdPista" value="9" />
+      <condition />
+      <activate flag="QREscaneado" />
       <condition />
     </effect>
   </qr-code>
